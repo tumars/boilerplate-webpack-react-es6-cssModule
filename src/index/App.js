@@ -42,7 +42,7 @@ export default class App extends Component {
 					<a href="javscript:;" className={btn.positive} onClick={this.hideDialog.bind(this)}>OK</a>
 				</Dialog>
 				<div className={style.wrapper}>
-					<h1>Hello, world</h1>
+					<h1>Hello, World</h1>
 			      	<article>
 			      		this demo includes following parts:
 			      		<ul>

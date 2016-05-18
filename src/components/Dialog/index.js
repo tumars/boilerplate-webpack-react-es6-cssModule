@@ -1,4 +1,5 @@
 import React, { PropTypes,Component } from 'react';
+
 import style from './dialog.less';
 import btn from '../Button/button.less';
 
