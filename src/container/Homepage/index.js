@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, IndexLink, browserHistory } from 'react-router';
-
-// add tap event for react
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
-
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 import Header from '../../components/Header/index.js';
 import Dialog from '../../components/Dialog/index.js';
@@ -22,6 +19,10 @@ class Homepage extends Component {
         this.state = {
             DialogVisible: false
         }
+    }
+
+    componentWillMount() {
+    	console.log(this.props)
     }
 
     showDialog () {
@@ -45,10 +46,19 @@ class Homepage extends Component {
 		browserHistory.push(path);
 	}
 
+	rtest() {
+		// this.context.router.push('/about')
+
+		this.props.dispatch({type: 'sayHi'})
+
+		// this.props.dispatch(addText('haha'))
+	}
+
 	render() {
 		return (
 			<div className={style.homePage}>
 				<Header />
+				
 				<Dialog
 					visible= {this.state.DialogVisible}
 					onClose= {this.hideDialog.bind(this)}
@@ -60,19 +70,23 @@ class Homepage extends Component {
 					<a href="javscript:;" className={btn.positive} onClick={this.hideDialog.bind(this)}>OK</a>
 				</Dialog>
 				<div className={style.wrapper}>
-					<h1>Hello, World</h1>
+					<h1>{ this.props.changeText.text }</h1>
 			      	<article>
 			      		this demo includes following parts:
 			      		<ul>
 			      			<li>React</li>
 			      			<li>React-Router</li>
-			      			<li>react-tap-event-plugin</li>
+			      			<li>Redux</li>
 			      			<li>ES6</li>
 			      			<li>Webpack</li>
 			      			<li>CssModule</li>
 			      		</ul>
 			      	</article>
-			      	{<a href="javascript:;" className={btn.primary} onTouchTap={this.handleTouchTap}>primary button</a>}
+			      	{/*<AlloyFinger
+			            onTap={this.handleTouchTap.bind(this)}>
+			            <div className="test">tttt</div>
+			        </AlloyFinger>*/}
+			        <a href="javascript:;" className={btn.primary} onClick={this.rtest.bind(this)}>test</a>
 			      	<a href="javascript:;" className={btn.primary} onClick={this.showDialog.bind(this)}>open a dialog</a>
 			      	<Link to="about" className={btn.primary} activeClassName="btn.positive">About Page</Link>
 			      	<Link to="contact" className={btn.primary}>Contact Page</Link>
@@ -87,4 +101,12 @@ class Homepage extends Component {
 
 }
 
-export default Homepage
+
+const mapStateToProps = (state) => {
+    return {
+        changeText: state.changeText
+    }
+}
+
+
+export default connect(mapStateToProps)(Homepage)

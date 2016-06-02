@@ -15,7 +15,9 @@ module.exports = {
         publicPath: '/static/'
     },
     plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ],
     module: {
         loaders: [{
@@ -30,10 +32,6 @@ module.exports = {
             test: /\.css$/,
             exclude: /node_modules/,
             loader: 'style!css?modules&localIdentName=[name]-[local]-[hash:base64:5]'
-        }, {
-            test: /\.css$/,
-            include: /node_modules/,
-            loader: 'style!css'
         }]
     },
     resolve: {

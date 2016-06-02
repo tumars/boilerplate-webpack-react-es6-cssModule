@@ -11,7 +11,6 @@ class NotFound extends Component {
         super(props)
     }
 
-
     render() {
         return (
             <div className={styles.content}>
