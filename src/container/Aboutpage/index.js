@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, IndexLink } from 'react-router';
+import { IndexLink } from 'react-router';
 
 import styles from './style.less';
 import btn from '../../components/Button/button.less';

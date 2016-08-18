@@ -1,5 +1,6 @@
 dist
 node_modules
+dependent
 coverage
 webpack.*.js
 *Server.js

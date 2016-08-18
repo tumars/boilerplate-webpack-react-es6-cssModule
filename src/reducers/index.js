@@ -1,16 +1,14 @@
 import { combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
 
-
-const initalState = {
+const initalHelloState = {
   HELLO_TEXT: 'Hi, World!'
 }
-const changeText = (state = initalState, action) => {
+const changeText = (state = initalHelloState, action) => {
     switch (action.type) {
         case 'sayHi':
             {
-                if (state.HELLO_TEXT !== 'hey, Tumars !') return { HELLO_TEXT: 'hey, Tumars !' }
-                return initalState
+                if (state.HELLO_TEXT != action.text ) return { HELLO_TEXT: action.text }
+                return initalHelloState;
             }
 
         default:
@@ -20,6 +18,5 @@ const changeText = (state = initalState, action) => {
 
 
 export default combineReducers({
-    changeText,
-    routing: routerReducer
+    changeText
 })

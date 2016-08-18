@@ -8,9 +8,10 @@ var nodeModulesPath = path.join(__dirname, '/node_modules/');
 
 module.exports = {
     devtool: 'eval',
-    entry: [
-        path.join(__dirname, './src/main.js')
-    ],
+    entry: {
+        bundle: './src/main.js',
+        vendor: ['react']
+    },
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: '[name]-[hash:5].min.js',
@@ -30,10 +31,11 @@ module.exports = {
                 warnings: false
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendor','vendor.js'),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
+        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js')
+        
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        // })
     ],
     module: {
         loaders: [{
@@ -49,7 +51,10 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx', '.json'],
         alias: {
+            'react': path.join(nodeModulesPath,'react/dist/react.min'),
             'react-dom': path.join(nodeModulesPath,'react-dom/dist/react-dom.min'),
+            'redux': path.join(nodeModulesPath,'redux/dist/redux.min'),
+            'react-redux': path.join(nodeModulesPath,'react-redux/dist/react-redux.min')
         }
     },
     postcss: [
