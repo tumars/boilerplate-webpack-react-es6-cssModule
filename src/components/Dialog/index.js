@@ -1,5 +1,7 @@
 import React, { PropTypes,Component } from 'react';
 
+import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
+
 import style from './dialog.less';
 
 const propTypes = {
@@ -9,7 +11,8 @@ const propTypes = {
     showCloseButton: PropTypes.bool,
 
     title:React.PropTypes.node,
-    content:React.PropTypes.node
+    content:React.PropTypes.node,
+    children:React.PropTypes.node
 }
 
 const defaultProps = {
@@ -65,11 +68,13 @@ class Dialog extends Component {
         const title = <h2 className={style.title}>{this.props.title}</h2>
         return (
             <div style={LocalStyle}>
+            <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={1000}>
                 {mask}
                 <div className={style.box}>
                     {title}
                     {this.props.children}
                 </div>
+            </ReactCSSTransitionGroup>
             </div>
         );
     }

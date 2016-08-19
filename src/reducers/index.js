@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 const initalHelloState = {
   HELLO_TEXT: 'Hi, World!'
 }
+
 const changeText = (state = initalHelloState, action) => {
     switch (action.type) {
         case 'sayHi':

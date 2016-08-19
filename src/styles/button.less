@@ -1,7 +1,7 @@
 .opa(@a:0.8){
 	opacity: @a;
 }
-.primary {
+.btn-primary {
 	display: block;
 	width: 230px;
 	line-height: 2;
@@ -14,21 +14,20 @@
 	background-color: #49A0FF;
 	border-radius: 3px;
 	cursor: pointer;
-	// box-shadow:  2px 3px 3px #898989;
-
-	small {
-		display: block;
-		font-size: 12px;
-	}
 }
 
-.positive {
-	composes: primary;
+.btn-positive {
+	.btn-primary;
 	background-color: green;
 }
 
-.disabled {
-	.primary;
+.btn-dialog {
+	.btn-primary;
+	background-color: #f40;
+}
+
+.btn-disabled {
+	.btn-primary;
 	.opa(0.5);
 	background-color: #aaa;
 }

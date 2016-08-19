@@ -44,8 +44,24 @@ module.exports = {
             include: path.join(__dirname, 'src'),
         }, {
             test: /\.less$/,
-            exclude: /node_modules/,
-            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!less?sourceMap')
+            exclude: [/node_modules/, path.resolve(__dirname, 'src/styles')],
+            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!less!postcss')
+        }, {
+            test: /\.css$/,
+            exclude: [/node_modules/, path.resolve(__dirname, 'src/styles')],
+            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss')
+        },{
+            test: [/\.less$/],
+            include: path.resolve(__dirname, 'src/styles'),
+            loader: ExtractTextPlugin.extract('style', 'css!less!postcss')
+        },{
+            test: [/\.css$/],
+            include: path.resolve(__dirname, 'src/styles'),
+            loader: ExtractTextPlugin.extract('style', 'css!less!postcss')
+        }, {
+            test:/\.(png|jpg)$/,
+            exclude: [/node_modules/],
+            loader: 'url-loader?limit=8192&name=build/[name].[ext]'
         }]
     },
     resolve: {
