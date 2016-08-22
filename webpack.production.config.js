@@ -1,37 +1,62 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var autoprefixer = require('autoprefixer');
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 var nodeModulesPath = path.join(__dirname, '/node_modules/');
 
 module.exports = {
-    devtool: 'eval',
+    devtool: false,
     entry: {
-        bundle: './src/main.js',
-        vendor: ['react']
+        bundle: './src/main.js'
     },
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: '[name]-[hash:5].min.js',
+        chunkFilename: '[name]-[hash:5].chunk.js',
         publicPath: './'
     },
     plugins: [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new HtmlWebpackPlugin({
-            template: 'src/index.tpl.html',
-            inject: 'body',
-            filename: 'index.html'
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            children: true,
+            minChunks: 2,
+            async: true,
         }),
-        new ExtractTextPlugin('[name]-[hash:5].min.css'),
-        new webpack.optimize.UglifyJsPlugin({
+        new webpack.optimize.OccurenceOrderPlugin(true),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js')
+        new HtmlWebpackPlugin({
+            template: 'src/index.tpl.html',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true,
+            },
+            inject: 'body',
+            filename: 'index.html'
+        }),
+        new ExtractTextPlugin('[name]-[hash:5].min.css')
         
         // new webpack.DefinePlugin({
         //     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -45,7 +70,7 @@ module.exports = {
         }, {
             test: /\.less$/,
             exclude: [/node_modules/, path.resolve(__dirname, 'src/styles')],
-            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!less!postcss')
+            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss!less')
         }, {
             test: /\.css$/,
             exclude: [/node_modules/, path.resolve(__dirname, 'src/styles')],
@@ -53,7 +78,7 @@ module.exports = {
         },{
             test: [/\.less$/],
             include: path.resolve(__dirname, 'src/styles'),
-            loader: ExtractTextPlugin.extract('style', 'css!less!postcss')
+            loader: ExtractTextPlugin.extract('style', 'css!postcss!less')
         },{
             test: [/\.css$/],
             include: path.resolve(__dirname, 'src/styles'),
@@ -67,10 +92,10 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx', '.json'],
         alias: {
-            'react': path.join(nodeModulesPath,'react/dist/react.min'),
-            'react-dom': path.join(nodeModulesPath,'react-dom/dist/react-dom.min'),
-            'redux': path.join(nodeModulesPath,'redux/dist/redux.min'),
-            'react-redux': path.join(nodeModulesPath,'react-redux/dist/react-redux.min')
+            // 'react': path.join(nodeModulesPath,'react/dist/react.min'),
+            // 'react-dom': path.join(nodeModulesPath,'react-dom/dist/react-dom.min'),
+            // 'redux': path.join(nodeModulesPath,'redux/dist/redux.min'),
+            // 'react-redux': path.join(nodeModulesPath,'react-redux/dist/react-redux.min')
         }
     },
     postcss: [

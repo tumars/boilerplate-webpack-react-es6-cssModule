@@ -14,6 +14,7 @@ const Contactpage = () => (
             <li>Twitter: <a href="https://twitter.com/Tumars">Tumars</a></li>
         </ul>
         <IndexLink  to="/" className="btn-primary">Back to Home</IndexLink>
+        <div className={styles.tusiji}></div>
     </div>
 )
 

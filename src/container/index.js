@@ -1,5 +1,7 @@
 import React from 'react';
-import { Router, IndexRoute, Route, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+
+import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
 
 import { Provider } from 'react-redux'
 
@@ -9,32 +11,64 @@ import '../styles/animation.less'
 import '../styles/button.less'
 import '../styles/reset.css'
 
-import HomeContainer from'./Homepage/HomeContainer'
-import Aboutpage from'./Aboutpage'
-import Contactpage from'./Contactpage'
-import NotFound from'./NotFound'
 
 
-
-const Layout = ({ children }) => (
+const Layout = ({ children, location  }) => (
 	<main>
-		{ children }
+		<ReactCSSTransitionGroup
+			component="div"
+			transitionName="example"
+		>
+			{React.cloneElement(children, {
+				key: location.pathname
+			})}
+		</ReactCSSTransitionGroup>
 	</main>
 )
 
 Layout.propTypes = {
-	children: React.PropTypes.node
+	children: React.PropTypes.node,
+	location: React.PropTypes.object
 }
+
+
 
 const App = (
 	<Provider store={ store }>
 		<Router history={ browserHistory} >
-			<Route path="/" component={ Layout }>
-				<IndexRoute component={ HomeContainer } />
-				<Route path="about" component={ Aboutpage } />
-				<Route path="contact" component={ Contactpage } />
-				<Route path="*" component={ NotFound } />
-			</Route>
+		<Route path="/" component={Layout}>
+			<IndexRoute 
+				getComponent={(location, callback) => {
+					require.ensure([], function (require) {
+						callback(null, require('./Homepage/HomeContainer.js').default);
+					}, 'HomeContainer');
+				}}
+			/>
+			<Route 
+				path="/about" 
+				getComponent={(location, callback) => {
+					require.ensure([], function (require) {
+						callback(null, require('./Aboutpage/index.js').default);
+					}, 'Aboutpage');
+				}}
+			/>
+			<Route 
+				path="/contact" 
+				getComponent={(location, callback) => {
+					require.ensure([], function (require) {
+						callback(null, require('./Contactpage/index.js').default);
+					}, 'Contactpage');
+				}}
+			/>
+			<Route 
+				path="/*" 
+				getComponent={(location, callback) => {
+					require.ensure([], function (require) {
+						callback(null, require('./NotFound/index.js').default);
+					}, 'NotFound');
+				}}
+			/>
+		</Route>
 		</Router>
 	</Provider>
 )

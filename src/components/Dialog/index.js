@@ -7,8 +7,6 @@ import style from './dialog.less';
 const propTypes = {
     onClose: PropTypes.func.isRequired,
     visible: PropTypes.bool,
-    showMask: PropTypes.bool,
-    showCloseButton: PropTypes.bool,
 
     title:React.PropTypes.node,
     content:React.PropTypes.node,
@@ -17,11 +15,10 @@ const propTypes = {
 
 const defaultProps = {
     visible: false,
-    showMask: true,
-    showCloseButton: true,
 
     title: null,
-    content: null
+    content: null,
+    children: null
 }
 
 class Dialog extends Component {
@@ -60,21 +57,26 @@ class Dialog extends Component {
     }
 
     render() {
-        const mask = this.props.showMask ? <div className={style.dyy} onClick={this.props.onClose}> </div> : null
-        const LocalStyle = {
-            display: this.state.isShow ? 'block' : 'none'
-        }
-
+        const mask = this.state.isShow ? <div className={style.dyy} onClick={this.props.onClose}> </div> : null
         const title = <h2 className={style.title}>{this.props.title}</h2>
-        return (
-            <div style={LocalStyle}>
-            <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={1000}>
-                {mask}
-                <div className={style.box}>
-                    {title}
-                    {this.props.children}
+        const InnerContent = this.state.isShow ? (
+                <div>
+                    <div className={style.box}>
+                        {title}
+                        {this.props.children}
+                    </div>
                 </div>
-            </ReactCSSTransitionGroup>
+            ) : 
+            null
+        
+        return (
+            <div>
+                <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true}>
+                {mask}
+                </ReactCSSTransitionGroup>
+                <ReactCSSTransitionGroup transitionName="slideTop" transitionAppear={true}>
+                    {InnerContent}
+                </ReactCSSTransitionGroup>
             </div>
         );
     }

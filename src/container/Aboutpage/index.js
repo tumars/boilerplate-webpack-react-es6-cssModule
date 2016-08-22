@@ -11,6 +11,7 @@ const Aboutpage = () => (
         <p>You can get update and more information in this github repo:</p>
         <p><a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule">https://github.com/tumars/boilerplate-webpack-react-es6-cssModule</a></p>
         <IndexLink  to="/" className="btn-primary">Back to Home</IndexLink>
+        <div className={styles.logo}></div>
     </div>
 )
 

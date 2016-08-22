@@ -54,7 +54,7 @@ class Home extends Component {
 						<li>Hammer</li>
 					</ul>
 				</article>
-				<Hammer onTap={this.props.onChangeTitle}><a href="javascript:;" className="btn-primary">test</a></Hammer>
+				<Hammer onTap={this.props.onChangeTitle}><a href="javascript:;" className="btn-primary">change title (by redux)</a></Hammer>
 				<a href="javascript:;" className="btn-primary" onClick={this.showDialog.bind(this)}>open a dialog</a>
 				<Link to="about" className="btn-primary" activeClassName="btn.positive">About Page</Link>
 				<Link to="contact" className="btn-primary">Contact Page</Link>
