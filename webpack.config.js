@@ -3,12 +3,14 @@ var webpack = require('webpack');
 
 var autoprefixer = require('autoprefixer');
 
+
+
 module.exports = {
     devtool: 'eval',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './src/main'
+        './src/app'
     ],
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -51,7 +53,7 @@ module.exports = {
         }]
     },
     postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
-    eslint: { failOnWarning: true },
+    eslint: { failOnWarning: true },  
     resolve: {
         extensions: ['', '.js', '.jsx', '.json']
     }

@@ -4,22 +4,6 @@ import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
 
 import style from './dialog.less';
 
-const propTypes = {
-    onClose: PropTypes.func.isRequired,
-    visible: PropTypes.bool,
-
-    title:React.PropTypes.node,
-    content:React.PropTypes.node,
-    children:React.PropTypes.node
-}
-
-const defaultProps = {
-    visible: false,
-
-    title: null,
-    content: null,
-    children: null
-}
 
 class Dialog extends Component {
     constructor(props) {
@@ -62,6 +46,7 @@ class Dialog extends Component {
         const InnerContent = this.state.isShow ? (
                 <div>
                     <div className={style.box}>
+                        <div className={style.closeicon} onClick={this.props.onClose}></div>
                         {title}
                         {this.props.children}
                     </div>
@@ -71,10 +56,10 @@ class Dialog extends Component {
         
         return (
             <div>
-                <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true}>
+                <ReactCSSTransitionGroup transitionName="fade" >
                 {mask}
                 </ReactCSSTransitionGroup>
-                <ReactCSSTransitionGroup transitionName="slideTop" transitionAppear={true}>
+                <ReactCSSTransitionGroup transitionName="slideTop" >
                     {InnerContent}
                 </ReactCSSTransitionGroup>
             </div>
@@ -82,7 +67,17 @@ class Dialog extends Component {
     }
 }
 
-Dialog.propTypes = propTypes;
-Dialog.defaultProps = defaultProps;
+Dialog.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    visible: PropTypes.bool,
+    title:React.PropTypes.node,
+    children:React.PropTypes.node
+};
+
+Dialog.defaultProps = {
+    visible: false,
+    title: null,
+    children: null
+};
 
 export default Dialog;

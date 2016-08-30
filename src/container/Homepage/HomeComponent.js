@@ -1,9 +1,7 @@
 import React, {PropTypes, Component } from 'react';
 import {Link} from 'react-router';
 import Hammer from 'react-hammerjs'
-
 import Dialog from '../../components/Dialog/index.js'
-
 
 import style from './style.less'
 
@@ -51,13 +49,13 @@ class Home extends Component {
 						<li>ES6</li>
 						<li>Webpack</li>
 						<li>CssModule</li>
-						<li>Hammer</li>
 					</ul>
 				</article>
 				<Hammer onTap={this.props.onChangeTitle}><a href="javascript:;" className="btn-primary">change title (by redux)</a></Hammer>
 				<a href="javascript:;" className="btn-primary" onClick={this.showDialog.bind(this)}>open a dialog</a>
 				<Link to="about" className="btn-primary" activeClassName="btn.positive">About Page</Link>
 				<Link to="contact" className="btn-primary">Contact Page</Link>
+				<Link to="fundlist" className="btn-primary">fundlist Page</Link>
 				<form onSubmit={this.props.handleSubmit} className={style.form}>
 					<input type="text" placeholder="Enter page name"/>
 					<button type="submit">Go</button>

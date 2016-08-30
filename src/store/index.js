@@ -5,13 +5,12 @@ import thunk from 'redux-thunk'
 
 import reducers from '../reducers'
 
-const store = createStore(
+let store = createStore(
 	reducers,
 	applyMiddleware(
-		thunk // 允许我们 dispatch() 函数
-		// createLogger() // 一个很便捷的 middleware，用来打印 action 日志
-	),
-	window.devToolsExtension && window.devToolsExtension() //浏览器调试插件，开发环境使用，编译打包时删除 	
+		thunk
+		// createLogger()
+	)
 )
 
 export default store
