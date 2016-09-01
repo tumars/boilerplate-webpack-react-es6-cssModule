@@ -2,8 +2,8 @@
 
 ---------
 效果如下：
-<div align="center" style="background:#999" >
-	![demo](demo.gif)
+<div style="background:#999" >
+![demo](./demo.gif)
 </div>
 
 
