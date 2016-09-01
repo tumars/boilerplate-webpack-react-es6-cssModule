@@ -9,7 +9,7 @@ let store = createStore(
 	reducers,
 	applyMiddleware(
 		thunk
-		// createLogger()
+		// createLogger() //打印action与store，开发时使用
 	)
 )
 

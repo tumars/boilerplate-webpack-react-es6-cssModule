@@ -29,14 +29,15 @@ class Home extends Component {
 		return (
 			<div className={style.homePage}>
 				<Dialog
-					visible= {this.state.DialogVisible}
-					onClose= {this.hideDialog.bind(this)}
+					visible={this.state.DialogVisible}
+					onClose={this.hideDialog.bind(this)}
+					isConfirm={true}
+					onConfirm={this.hideDialog.bind(this)}
 					title= "I'm Dialog"
 				>
                     <div className="content">
                         here are some tips!
                     </div>
-					<a href="javscript:;" className="btn-dialog" onClick={this.hideDialog.bind(this)}>OK</a>
 				</Dialog>
 				<div className={style.wrapper}>
 					<h1>{ this.props.title }</h1>

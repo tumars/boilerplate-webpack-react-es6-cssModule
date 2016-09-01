@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "mock": "json-server mock/db.json --port 3003 &",
+    "start": "node server.js &",
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm test -- --watch",
     "lint": "eslint src",

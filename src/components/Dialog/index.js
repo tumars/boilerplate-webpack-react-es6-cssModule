@@ -42,6 +42,13 @@ class Dialog extends Component {
 
     render() {
         const mask = this.state.isShow ? <div className={style.dyy} onClick={this.props.onClose}> </div> : null
+        const confirmBox = this.props.isConfirm ? (
+                <div>
+                    <div className={style.confirmbox}>
+                        <a href="javascript:void(0)" onClick={this.props.onConfirm}>ok</a>
+                    </div>
+                </div>
+            ) : null
         const title = <h2 className={style.title}>{this.props.title}</h2>
         const InnerContent = this.state.isShow ? (
                 <div>
@@ -49,17 +56,20 @@ class Dialog extends Component {
                         <div className={style.closeicon} onClick={this.props.onClose}></div>
                         {title}
                         {this.props.children}
+                        {confirmBox}
                     </div>
                 </div>
             ) : 
             null
+
+        
         
         return (
             <div>
-                <ReactCSSTransitionGroup transitionName="fade" >
+                <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                 {mask}
                 </ReactCSSTransitionGroup>
-                <ReactCSSTransitionGroup transitionName="slideTop" >
+                <ReactCSSTransitionGroup transitionName="slideTop" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                     {InnerContent}
                 </ReactCSSTransitionGroup>
             </div>
@@ -69,15 +79,18 @@ class Dialog extends Component {
 
 Dialog.propTypes = {
     onClose: PropTypes.func.isRequired,
+    onConfirm: PropTypes.func,
     visible: PropTypes.bool,
-    title:React.PropTypes.node,
-    children:React.PropTypes.node
+    title:PropTypes.node,
+    children:PropTypes.node,
+    isConfirm: PropTypes.bool
 };
 
 Dialog.defaultProps = {
     visible: false,
     title: null,
-    children: null
+    children: null,
+    isConfirm: false
 };
 
 export default Dialog;

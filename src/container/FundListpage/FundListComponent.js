@@ -1,6 +1,7 @@
 import React, {PropTypes, Component } from 'react';
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
 import Spin from '../../components/Spin/index.js'
+import Dialog from '../../components/Dialog/index.js'
 
 import styles from './style.less'
 
@@ -15,22 +16,33 @@ class FundList extends Component {
     }
 
     render() {
-		const {  FundData, dataInit, handleRefresh, backHome } = this.props
+		const {  FundData, dataInit, handleRefresh, backHome, handleCloseDialog } = this.props
 		let list = (
 			<ul>
-				<ReactCSSTransitionGroup transitionName="fade">
+				<ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
 					{FundData.datas.map((elem, index) => 
-						<li className={styles.funditem} key={index}><i>{index}</i>{elem.SHORTNAME}</li>
+						<li className={styles.funditem} key={index}><i>{index}</i>{elem.name}</li>
 					)}
 				</ReactCSSTransitionGroup>
 			</ul>
 		)
 		let spin = FundData.isloading ? (<Spin />) : null
+		let dialogTip = (<Dialog 
+							title="提示" 
+							visible={FundData.isShowTip}
+							isConfirm={true}
+							onConfirm={() => handleCloseDialog()}
+							onClose={() => handleCloseDialog()} 
+						>
+							<p>{FundData.tipMassge}</p>
+						</Dialog>)
 
 		return (
+			<div>
+			{spin}
+			{dialogTip}
 			<div className={styles.content}>				
 				<h1>Fund List</h1>
-				{spin}
 				{list}
 				<div className={styles.bottom}>
 					<div>第{FundData.page}页</div>
@@ -38,6 +50,7 @@ class FundList extends Component {
 					<div onClick={() => dataInit()}>折叠</div>
 					<div onClick={() => backHome()}>返回首页</div>
 				</div>
+			</div>
 			</div>
 		)
     }
@@ -48,14 +61,17 @@ FundList.propTypes = {
 	FundData: PropTypes.object.isRequired,
 	dataInit: PropTypes.func.isRequired,
 	handleRefresh: PropTypes.func.isRequired,
-	backHome: PropTypes.func.isRequired
+	backHome: PropTypes.func.isRequired,
+	handleCloseDialog: PropTypes.func.isRequired
 }
 
 FundList.defaultProps = {
     FundData: {
 		datas:[],
 		page:0,
-		isloading: true
+		isloading: true,
+		isShowTip: false,
+		tipMassge: null
     }
 };
 

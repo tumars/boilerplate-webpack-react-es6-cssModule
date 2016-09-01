@@ -15,23 +15,39 @@
 	width: 80%;
 	box-sizing: border-box;
 	margin-left: -40%;
-	padding: 10px;
+	padding: 10px 34px;
 	background-color: #fff;
-	border: solid 2px #f40;
 	border-radius: 6px;
 }
 
 .title {
+	padding: 24px 0 20px;
 	font-size: 20px;
 	font-weight: bold;
-	text-align: center;
+	line-height: 32px;
+	text-align: left;
 }
+
+p {color: rgba(0, 0, 0, 0.6)}
 
 .closeicon {
 	position: absolute;
-	top: 0;
-	right: 0;
-	background: url(../Dialog/close.png) no-repeat, #f40;
-	width: 32px;
-	height: 32px;
+	top: 4px;
+	right: 4px;
+	background: url(../Dialog/close.png) no-repeat;
+	background-size: 100%;
+	width: 20px;
+	height: 20px;
+}
+
+.confirmbox {
+	padding: 20px 0 0 10px;
+	background: none;
+	text-align: right;
+
+	a {
+		color: #49A0FF; 
+		font-size: 16px;
+		text-decoration: none;
+	}
 }

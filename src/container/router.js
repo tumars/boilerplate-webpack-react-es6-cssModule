@@ -16,6 +16,7 @@ const Layout = ({ children, location  }) => (
 		<ReactCSSTransitionGroup
 			component="div"
 			transitionName="example"
+			transitionEnterTimeout={400} transitionLeaveTimeout={400}
 		>
 			{React.cloneElement(children, {
 				key: location.pathname
