@@ -2,9 +2,7 @@
 
 ---------
 效果如下：
-<div style="background:#999" >
 ![demo](./demo.gif)
-</div>
 
 
 ---------
