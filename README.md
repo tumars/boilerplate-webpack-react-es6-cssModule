@@ -48,6 +48,8 @@ npm run mock
 npm run lint src
 ```
 
+检测完毕会在命令行显示所有纠错提示
+
 
 ## Dependencies
 - [React](https://github.com/facebook/react)
