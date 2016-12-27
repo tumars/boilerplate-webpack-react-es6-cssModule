@@ -7,7 +7,7 @@ import store from '../store'
 
 import '../styles/animation.less'
 import '../styles/button.less'
-import '../styles/reset.css'
+import '../styles/reset.less'
 
 
 
@@ -15,8 +15,8 @@ const Layout = ({ children, location  }) => (
 	<main>
 		<ReactCSSTransitionGroup
 			component="div"
-			transitionName="example"
-			transitionEnterTimeout={400} transitionLeaveTimeout={400}
+			transitionName="carousel"
+			transitionEnterTimeout={500} transitionLeaveTimeout={500}
 		>
 			{React.cloneElement(children, {
 				key: location.pathname
@@ -38,7 +38,7 @@ const App = (
 				<IndexRoute 
 					getComponent={(location, callback) => {
 						require.ensure([], function (require) {
-							callback(null, require('./Homepage/HomeContainer.js').default);
+							callback(null, require('../view/Homepage').default);
 						}, 'HomeContainer');
 					}}
 				/>
@@ -46,7 +46,7 @@ const App = (
 					path="/about" 
 					getComponent={(location, callback) => {
 						require.ensure([], function (require) {
-							callback(null, require('./Aboutpage/index.js').default);
+							callback(null, require('../view/Aboutpage').default);
 						}, 'Aboutpage');
 					}}
 				/>
@@ -54,7 +54,7 @@ const App = (
 					path="/contact" 
 					getComponent={(location, callback) => {
 						require.ensure([], function (require) {
-							callback(null, require('./Contactpage/index.js').default);
+							callback(null, require('../view/Contactpage').default);
 						}, 'Contactpage');
 					}}
 				/>
@@ -62,7 +62,7 @@ const App = (
 					path="/fundlist" 
 					getComponent={(location, callback) => {
 						require.ensure([], function (require) {
-							callback(null, require('./FundListpage/FundListContainer.js').default);
+							callback(null, require('../view/FundListpage').default);
 						}, 'FundListContainer');
 					}}
 				/>
@@ -70,7 +70,7 @@ const App = (
 					path="*" 
 					getComponent={(location, callback) => {
 						require.ensure([], function (require) {
-							callback(null, require('./NotFound/index.js').default);
+							callback(null, require('../view/NotFound/index.js').default);
 						}, 'NotFound');
 					}}
 				/>

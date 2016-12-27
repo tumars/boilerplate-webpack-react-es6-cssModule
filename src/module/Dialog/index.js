@@ -1,7 +1,5 @@
 import React, { PropTypes,Component } from 'react';
-
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
-
 import style from './dialog.less';
 
 
@@ -61,15 +59,13 @@ class Dialog extends Component {
                 </div>
             ) : 
             null
-
-        
         
         return (
             <div>
-                <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
                 {mask}
                 </ReactCSSTransitionGroup>
-                <ReactCSSTransitionGroup transitionName="slideTop" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                <ReactCSSTransitionGroup transitionName="slideTop" transitionEnterTimeout={200} transitionLeaveTimeout={200}>
                     {InnerContent}
                 </ReactCSSTransitionGroup>
             </div>

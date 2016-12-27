@@ -1,20 +1,23 @@
-body {
-	font-size: 14px;
-	color: rgba(0, 0, 0, 0.870588);
-}
-
-.homePage {
-	box-sizing: border-box;
-	padding-bottom: 50px;
-	line-height: 1.5;
+.content {
+	position: absolute;
+	top: 0;left: 0;
+	display: block;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch; 
 
 	h1 {
 		font-size: 36px;
+		box-sizing: border-box;
+		padding-left: 10px;
 	}
 
 	article {
 		font-size: 18px;
 		color: #333;
+		box-sizing: border-box;
+		padding: 0 10px;
 
 	}
 
@@ -22,10 +25,6 @@ body {
 		list-style-type: disc;
 		margin-left: 40px;
 	}
-}
-
-.wrapper {
-	padding: 0 10px;
 }
 
 .form {
@@ -39,7 +38,7 @@ body {
 	input {
 		width: 70%;
 		line-height: inherit;
-		background-color: #eee;
+		background-color: #fff;
 		border-radius: 3px 0 0 3px;
 		text-align: center;
 	}

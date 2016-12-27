@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router';
 
-import Home from './HomeComponent.js'
+import Home from './component'
 
 const mapDispatchToProps = (dispatch) => {
 	return{

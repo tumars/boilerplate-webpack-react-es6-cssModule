@@ -1,7 +1,6 @@
-import React, {PropTypes, Component } from 'react';
-import {Link} from 'react-router';
-import Hammer from 'react-hammerjs'
-import Dialog from '../../components/Dialog/index.js'
+import React, {PropTypes, Component } from 'react'
+import {Link} from 'react-router'
+import Dialog from 'Dialog'
 
 import style from './style.less'
 
@@ -14,7 +13,9 @@ class Home extends Component {
             DialogVisible: false
         }
     }
-
+    componentDidMount() {
+		this.content.style.height = window.innerHeight + 'px'
+    }
     showDialog () {
         this.setState({
             DialogVisible: true
@@ -27,7 +28,7 @@ class Home extends Component {
 
 	render() {
 		return (
-			<div className={style.homePage}>
+			<div className={style.content} ref={node => this.content = node}>
 				<Dialog
 					visible={this.state.DialogVisible}
 					onClose={this.hideDialog.bind(this)}
@@ -39,8 +40,7 @@ class Home extends Component {
                         here are some tips!
                     </div>
 				</Dialog>
-				<div className={style.wrapper}>
-					<h1>{ this.props.title }</h1>
+				<h1>{ this.props.title }</h1>
 				<article>
 					this demo includes following parts:
 					<ul>
@@ -52,7 +52,7 @@ class Home extends Component {
 						<li>CssModule</li>
 					</ul>
 				</article>
-				<Hammer onTap={this.props.onChangeTitle}><a href="javascript:;" className="btn-primary">change title (by redux)</a></Hammer>
+				<a href="javascript:;" className="btn-primary" onClick={this.props.onChangeTitle}>change title (by redux)</a>
 				<a href="javascript:;" className="btn-primary" onClick={this.showDialog.bind(this)}>open a dialog</a>
 				<Link to="about" className="btn-primary" activeClassName="btn.positive">About Page</Link>
 				<Link to="contact" className="btn-primary">Contact Page</Link>
@@ -62,7 +62,6 @@ class Home extends Component {
 					<button type="submit">Go</button>
 				</form>
 			</div>
-		</div>
 		);
 	}
 }

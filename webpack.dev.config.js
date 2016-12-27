@@ -1,12 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
-
 var autoprefixer = require('autoprefixer');
 
-
-
 module.exports = {
-    devtool: 'eval',
+    devtool: 'cheap-module-eval-source-map',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
@@ -20,7 +17,15 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.ProvidePlugin({
+            'Promise':'es6-promise',
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dist/dll/vendor-manifest.json')
+        })
     ],
     module: {
         preLoaders: [
@@ -32,29 +37,23 @@ module.exports = {
             include: path.join(__dirname, 'src')
         }, {
             test: /\.less$/,
-            exclude: [/node_modules/, path.resolve(__dirname, 'src/styles')],
-            loader: 'style!css?modules&localIdentName=[name]-[local]-[hash:base64:5]!less?sourceMap=true'
-        }, {
-            test: /\.less$/,
-            include: path.resolve(__dirname, 'src/styles'),
-            loader: 'style!css!less?sourceMap=true'
-        }, {
-            test: /\.css$/,
-            exclude: [/node_modules/, path.resolve(__dirname, 'src/styles')],
-            loader: 'style!css?modules&localIdentName=[name]-[local]-[hash:base64:5]'
-        }, {
-            test: /\.css$/,
-            include: path.resolve(__dirname, 'src/styles'),
-            loader: 'style!css'
-        }, {
-            test:/\.(png|jpg)$/,
             exclude: [/node_modules/],
-            loader: 'url-loader?limit=8192&name=build/[name].[ext]'
+            loader: 'style!css?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!resolve-url!less'
+        }, {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            include: path.join(__dirname, 'src'),
+            loaders: [
+                'url?limit=10000&name=img/[hash:8].[name].[ext]' // 图片小于8k就转化为 base64, 或者单独作为文件
+            ]
         }]
     },
     postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
     eslint: { failOnWarning: true },  
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json']
+        extensions: ['', '.js', '.jsx', '.json'],
+        modulesDirectories: ['node_modules', './src/module'],
+        alias: {
+            'co': path.join(__dirname, './src/util/co')
+        }
     }
 };

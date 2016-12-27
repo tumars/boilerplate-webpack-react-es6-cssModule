@@ -1,8 +1,7 @@
 import React, {PropTypes, Component } from 'react';
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
-import Spin from '../../components/Spin/index.js'
-import Dialog from '../../components/Dialog/index.js'
-
+import Spin from 'Spin'
+import Dialog from 'Dialog'
 import styles from './style.less'
 
 
@@ -11,7 +10,7 @@ class FundList extends Component {
         super(props)
     }
 
-    componentWillMount() {
+    componentDidMount() {
 		this.props.dataInit()
     }
 
@@ -38,10 +37,9 @@ class FundList extends Component {
 						</Dialog>)
 
 		return (
-			<div>
-			{spin}
-			{dialogTip}
-			<div className={styles.content}>				
+			<div className={styles.content}>	
+				{spin}
+				{dialogTip}			
 				<h1>Fund List</h1>
 				{list}
 				<div className={styles.bottom}>
@@ -50,7 +48,7 @@ class FundList extends Component {
 					<div onClick={() => dataInit()}>折叠</div>
 					<div onClick={() => backHome()}>返回首页</div>
 				</div>
-			</div>
+
 			</div>
 		)
     }

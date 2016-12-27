@@ -1,11 +1,7 @@
 import { connect } from 'react-redux'
-
 import { browserHistory } from 'react-router'
-
-import 'whatwg-fetch'
+import FundList from './component'
 // import fetchJsonp from 'fetch-jsonp'  如果使用 jsonp，使用此依赖，方法查看 https://github.com/camsong/fetch-jsonp
-
-import FundList from './FundListComponent.js'
 
 
 const mapDispatchToProps = (dispatch) => {
