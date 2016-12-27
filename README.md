@@ -1,6 +1,7 @@
 这是个主要使用 webpack + react + redux + es6 + cssModule 的 demo，包含 React 技术栈全家桶，可作为开发模板使用。
 
 >webpack 的具体使用及优化可参考我的博文 [webpack 使用总结](http://www.ferecord.com/webpack-summary.html) 
+
 >组件的使用开发可参考 [ActiUI](https://tumars.github.io/ActiUI/) (自己写的 react component 组件库，欢迎指导)
 
 ##主要功能特征
