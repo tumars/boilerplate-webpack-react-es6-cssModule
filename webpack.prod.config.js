@@ -3,13 +3,10 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var nodeModulesPath = path.join(__dirname, '/node_modules/');
 
 module.exports = {
     devtool: false,
-    entry: {
-        bundle: './src/app.js'
-    },
+    entry: ['babel-polyfill', './src/app.js'],
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: '[name]-[hash:5].min.js',
@@ -17,12 +14,20 @@ module.exports = {
         publicPath: './'
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(true),
-        new webpack.optimize.DedupePlugin(),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+        }),
         new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            mangle: {
+                screw_ie8: true,
+                keep_fnames: true
+            },
             compress: {
-                warnings: false
-            }
+                screw_ie8: true
+            },
+            comments: false
         }),
         new HtmlWebpackPlugin({
             template: 'src/index.tpl.html',
@@ -41,43 +46,47 @@ module.exports = {
             inject: 'body',
             filename: 'index.html'
         }),
-        new ExtractTextPlugin('[name]-[hash:5].min.css'),
-        new webpack.DefinePlugin({
-          "process.env": { 
-             NODE_ENV: JSON.stringify("production") 
-           }
+        new ExtractTextPlugin({
+            filename: 'bundle.css',
+            disable: false,
+            allChunks: true
         }),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require('./dll/vendor-manifest.json')
+        new webpack.ProvidePlugin({
+            'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('prod')  
+            }
         })
+        // new webpack.DllReferencePlugin({
+        //     context: __dirname,
+        //     manifest: require('./dist/dll/vendor-manifest.json')
+        // })
     ],
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
-            loaders: ['babel'],
             include: path.join(__dirname, 'src'),
+            use: ['babel-loader']
         }, {
             test: /\.less$/,
             exclude: [/node_modules/],
-            loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!resolve-url!postcss!less')
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:5]"!postcss-loader!less-loader'
+            }),
         }, {
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            include: path.join(__dirname, 'src'),
-            loaders: [
-                'url?limit=10000&name=img/[hash:8].[name].[ext]', // 图片小于8k就转化为 base64, 或者单独作为文件
-                'image-webpack' // 图片压缩
-            ]
+            test:/\.(png|jpg|gif)$/,
+            exclude: [/node_modules/],
+            use: 'url-loader?limit=8192&name=build/[name].[ext]'
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json'],
-        modulesDirectories: ['node_modules', './src/module'],
+        extensions: ['.js', '.jsx', '.json'],
+        modules: ['node_modules', './src/module', './src/action', './src/util/'],
         alias: {
             'co': path.join(__dirname, './src/util/co')
         }
-    },
-    postcss: [
-        require('autoprefixer')
-    ]
+    }
 };

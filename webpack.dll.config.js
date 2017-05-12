@@ -4,7 +4,16 @@ var nodeModulesPath = path.join(__dirname, '/node_modules/');
 
 module.exports = {
   entry: {
-    vendor: ['react', 'react-dom']
+    vendor: [
+      'react', 
+      'react-dom',
+      'react-redux',
+      'react-router',
+      'redux',
+      'redux-thunk',
+      'react-addons-css-transition-group',
+      'whatwg-fetch'
+    ]
   },
   output: {
     path: path.join(__dirname, 'dist/dll'),

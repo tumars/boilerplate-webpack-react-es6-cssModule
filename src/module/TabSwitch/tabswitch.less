@@ -1,0 +1,81 @@
+.content {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+}
+.head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    li {
+        width: 48.5%;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        background: #dd514c;
+        border: 1px solid #d9d9d9;
+        border-bottom: none;
+        border-radius: .5em .5em 0 0;
+    }
+}
+li.active {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.2em;
+    color: #898989;
+    background: #fff;
+
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        border-top: solid 4px #fff;
+        background: #fff;
+    }
+}
+
+.body {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 450px;
+    border: 1px solid #d9d9d9;
+    // border-bottom: none;
+    text-align: center;
+    overflow: hidden;
+}
+.box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+.enter {
+    // transform: translateX(-5%);
+    opacity: 0.5;
+}
+.enterActive {
+    // transform: translateX(-0);
+    opacity: 1;
+    transition: all 150ms ease-in;
+}
+
+.leave {
+    // transform: translateX(-0);
+    opacity: .5;
+}
+
+.leaveActive {
+    // transform: translateX(-5%);
+    opacity: 0.01;
+    transition: all 150ms ease-in;
+}

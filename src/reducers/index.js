@@ -1,48 +1,45 @@
 import { combineReducers } from 'redux'
 
-const initalHelloState = {
-  HELLO_TEXT: 'Hi, World!'
+/*-----------------------------------------------------------------*/
+/*HomeInfo*/
+/*-----------------------------------------------------------------*/
+const textBox = ['你好，我是 webpack v2.x 的示例 domo', 'Hello, I am a boilerplate for webpack v2.x ']
+const initHomeInfo = {
+    helloText: textBox[0],
+    userIp: null
 }
 
-const changeText = (state = initalHelloState, action) => {
+const HomeInfo = (state = initHomeInfo, action) => {
     switch (action.type) {
-        case 'sayHi':
-            {
-                if (state.HELLO_TEXT != action.text ) return { HELLO_TEXT: action.text }
-                return initalHelloState;
-            }
-
+        case 'CHANGE_HELLO':
+            return action.text === state.helloText ? Object.assign({}, state, {text: action.text}) : state
+        case 'GET_USER_IP':
+            return Object.assign({}, state, {userIp: action.ip})
         default:
             return state
     }
 }
 
-const initalFundState = {
-    datas:[],
-    page:0,
-    isloading: false,
-    isShowTip: false
-}
 
-const FundPageInfo = (state = initalFundState, action) => {
+/*-----------------------------------------------------------------*/
+/*ListInfo*/
+/*-----------------------------------------------------------------*/
+
+const initListInfo = []
+const ListInfo = (state = initListInfo, action) => {
     switch (action.type) {
-        case 'INIT_FUND':
+        case 'ADD_LIST':
             {
-                return Object.assign({}, state, action.item)
-            }
-        case 'TURN_PAGE':
-            {
-                return Object.assign({}, state, action.item, {
-                    datas: action.item.datas ? state.datas.concat(action.item.datas) : state.datas
-                })
+                return state.concat(action.list)
             }
         default:
             return state
     }
 }
+
 
 
 export default combineReducers({
-    changeText,
-    FundPageInfo
+    HomeInfo,
+    ListInfo
 })

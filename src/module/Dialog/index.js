@@ -1,92 +1,53 @@
-import React, { PropTypes,Component } from 'react';
-import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
-import style from './dialog.less';
-
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
+import Modal from './modal'
+import showMsg from "./showMsg";
 
 class Dialog extends Component {
     constructor(props) {
         super(props);
+    }
 
-        this.state = {
-            isShow: false
-        };
+    renderPoral() {
+        ReactDOM.unstable_renderSubtreeIntoContainer(
+            this,
+            <Modal {...this.props}>
+                {this.props.children}
+            </Modal>,
+            this.node
+        )
     }
 
     componentDidMount() {
-        if (this.props.visible) {
-            this.enter();
-        }
+        this.node = document.createElement('div')
+        document.body.appendChild(this.node)
+        this.renderPoral()
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (!this.props.visible && nextProps.visible) {
-            this.enter();
-        } else if (this.props.visible && !nextProps.visible) {
-            this.leave();
-        }
+    componentDidUpdate() {
+        this.renderPoral()
     }
 
-    enter() {
-        this.setState({
-            isShow: true
-        })
+    componentWillUnmount() {
+        document.body.removeChild(this.node)
     }
 
-    leave() {
-        this.setState({
-            isShow: false
-        });
-    }
-
-    render() {
-        const mask = this.state.isShow ? <div className={style.dyy} onClick={this.props.onClose}> </div> : null
-        const confirmBox = this.props.isConfirm ? (
-                <div>
-                    <div className={style.confirmbox}>
-                        <a href="javascript:void(0)" onClick={this.props.onConfirm}>ok</a>
-                    </div>
-                </div>
-            ) : null
-        const title = <h2 className={style.title}>{this.props.title}</h2>
-        const InnerContent = this.state.isShow ? (
-                <div>
-                    <div className={style.box}>
-                        <div className={style.closeicon} onClick={this.props.onClose}></div>
-                        {title}
-                        {this.props.children}
-                        {confirmBox}
-                    </div>
-                </div>
-            ) : 
-            null
-        
-        return (
-            <div>
-                <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-                {mask}
-                </ReactCSSTransitionGroup>
-                <ReactCSSTransitionGroup transitionName="slideTop" transitionEnterTimeout={200} transitionLeaveTimeout={200}>
-                    {InnerContent}
-                </ReactCSSTransitionGroup>
-            </div>
-        );
+    render() {        
+        return null
     }
 }
 
 Dialog.propTypes = {
-    onClose: PropTypes.func.isRequired,
-    onConfirm: PropTypes.func,
+    onClose: PropTypes.func,
     visible: PropTypes.bool,
-    title:PropTypes.node,
-    children:PropTypes.node,
-    isConfirm: PropTypes.bool
+    children:PropTypes.node
 };
 
 Dialog.defaultProps = {
-    visible: false,
-    title: null,
-    children: null,
-    isConfirm: false
+    visible: false
 };
 
-export default Dialog;
+
+Dialog.showMsg = showMsg
+export default Dialog

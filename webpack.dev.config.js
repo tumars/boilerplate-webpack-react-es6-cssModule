@@ -1,59 +1,78 @@
-var path = require('path');
+const { resolve } = require('path');
 var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
+        'react-hot-loader/patch',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
+        'babel-polyfill',
         './src/app'
     ],
     output: {
-        path: path.join(__dirname, '/dist/'),
+        path: resolve(__dirname, '/dist/'),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/'
+    },
+    devServer: {
+        hot: true,
+        publicPath: '/',
+        historyApiFallback: true,
+        stats: "errors-only"
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin(), 
+        new webpack.NamedModulesPlugin(),
         new webpack.ProvidePlugin({
-            'Promise':'es6-promise',
-            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+            fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
         }),
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require('./dist/dll/vendor-manifest.json')
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('dev')  
+            }
         })
     ],
     module: {
-        preLoaders: [
-            {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/}
-        ],
-        loaders: [{
+        rules: [ {
             test: /\.js$/,
-            loaders: ['react-hot', 'babel'],
-            include: path.join(__dirname, 'src')
+            include:  /src/,
+            use: [
+                "babel-loader",
+                "eslint-loader"
+            ]
         }, {
             test: /\.less$/,
-            exclude: [/node_modules/],
-            loader: 'style!css?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!resolve-url!less'
+            exclude: /node_modules/,
+            use: [
+                'style-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        minimize: true,
+                        modules: true,
+                        localIdentName: '[name]-[local]-[hash:base64:5]',
+                        importLoaders: 2
+                    }
+                },
+                'postcss-loader',
+                'less-loader'
+            ],
         }, {
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            include: path.join(__dirname, 'src'),
-            loaders: [
-                'url?limit=10000&name=img/[hash:8].[name].[ext]' // 图片小于8k就转化为 base64, 或者单独作为文件
+            test: /\.(jpe?g|png|gif)$/i,
+            include:  /src/,
+            use: [
+                'url-loader?limit=10000&name=img/[hash:8].[name].[ext]' // 图片小于8k就转化为 base64, 或者单独作为文件
             ]
         }]
     },
-    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
-    eslint: { failOnWarning: true },  
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json'],
-        modulesDirectories: ['node_modules', './src/module'],
+        extensions: ['.js', '.jsx', '.json'],
+        modules: ['node_modules', './src/module', './src/action', './src/util/'],
         alias: {
-            'co': path.join(__dirname, './src/util/co')
+            'co': resolve(__dirname, './src/util/co'),
+            'action': resolve(__dirname, './src/action/index.js'),
+            'stroe': resolve(__dirname, './src/store/index.js'),
         }
     }
 };

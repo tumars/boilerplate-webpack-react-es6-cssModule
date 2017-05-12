@@ -1,11 +1,10 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 var config = require('./webpack.dev.config');
 
-const isDeveloping = process.env.NODE_ENV !== 'production';
-const port = isDeveloping ? 3000 : process.env.PORT;
-
 var compiler = webpack(config);
+compiler.apply(new DashboardPlugin());
 var server = new WebpackDevServer(compiler, {
 	publicPath: config.output.publicPath,
 	hot: true,
