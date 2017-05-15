@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
 import style from './tabswitch.less';
 

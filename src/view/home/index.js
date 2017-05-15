@@ -1,24 +1,26 @@
 import { connect } from 'react-redux'
-import history from 'history'
+import history from 'myhistory'
+import { changeText, getUserIp } from './homeReducer'
 import HomeComponent from './component.js'
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		handleGetUser() {
+			dispatch(getUserIp(1111222))
+		},
 		hanldeChangHello() {
-			dispatch({
-				type: 'CHANGE_HELLO'
-			})
+			dispatch(changeText())
 		},
 		hanldeGoList() {
 			history.push('/list')
 		}
 	}	
 }
-
+	
 const mapStateToProps = (state) => {
     return {
-        helloText: state.HomeInfo.helloText,
-		userIp: state.HomeInfo.userIp
+        helloText: state.HomeReducer.helloText,
+		userIp: state.HomeReducer.userIp
     }
 }
 

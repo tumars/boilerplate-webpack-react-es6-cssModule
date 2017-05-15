@@ -1,39 +1,40 @@
-import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import style from './list.less'
+import history from 'myhistory'
+import { addList } from './listReducer'
+import ListComponent from './listComponent.js'
+import Dialog from 'Dialog'
 
-class ListComponent extends Component {
-	constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-    }
-	render() {
-		const { helloText, hanldeGoList } = this.props
-		return (
-			<div className={style.wrap}>
-				{helloText}
-				<div onClick={()=>hanldeGoList()}>see list</div>
-				<div onClick={()=>hanldeGoList()}>see list</div>
-			</div>
-		)
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		handleGetData(type, page) {
+			fetch(`http://localhost:3003/${type}${page}`)
+				.then(res => {
+					if (!res.ok) {
+						Dialog.showMsg('已无更多')
+						return false
+					} 
+					return res.json()
+				})
+				.then(list => list && dispatch(addList(type, list)))
+		},
+		handleGoBack() {
+			history.go(-1)
+		}
+	}	
+}
+	
+const mapStateToProps = (state) => {
+    return {
+        movieListInfo: state.ListReducer.movieListInfo,
+		bookListInfo: state.ListReducer.bookListInfo
 	}
 }
 
-ListComponent.propTypes = {
-	helloText: PropTypes.string,
-	hanldeGoList: PropTypes.func
-}
-
-const mapStateToProps = (state) => {
-    return {
-        helloText: state.helloText
-    }
-}
 
 const List = connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(ListComponent)
 
 export default List
