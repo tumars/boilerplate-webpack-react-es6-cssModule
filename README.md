@@ -55,7 +55,7 @@ yarn start
 
 访问 `http://localhost:3000/#/home` 查看页面。
 
-![iterm1](./img/iterm1.gif)
+![iterm1](./img/iterm1.png)
 
 #### mock 接口数据
 本项目的接口数据通过 `json-server` 配置，需全局安装并启动：
@@ -89,7 +89,7 @@ anywhere
 ```
 页面会自动打开（地址要加上 /#/home）
 
-![iterm2](./img/iterm2.gif)
+![iterm2](./img/iterm2.png)
 
 ## 主要版本变化
 
