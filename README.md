@@ -1,4 +1,4 @@
-本模板主要作为 react 项目开发的启动模板。本模板使用 webpack v2、react v15、react-router v4，相较旧模板有较大的变化。
+本项目主要作为 react 项目开发的启动模板。使用 webpack v2、react v15、react-router v4，相较旧模板有较大的变化。
 
 > webpack 的具体使用及优化可参考我的博文 [webpack 使用总结](http://www.ferecord.com/webpack-summary.html) 。
 
