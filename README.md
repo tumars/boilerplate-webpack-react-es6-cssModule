@@ -70,12 +70,12 @@ yarn run mock
 #### 打包
 Windows 用户使用：
 ```
-yarn run buil-win
+yarn run build-win
 ```
 
 Mac 用户使用：
 ```
-yarn run buil-mac
+yarn run build-mac
 ```
 
 文件将会在`./dist`文件夹内生成。
