@@ -83,7 +83,7 @@ yarn run build-mac
 
 可以使用`anywhere`工具建立本地服务查看页面：
 ```
-yarn --global add anywhere 或 npm i -g anywhere
+yarn global add anywhere 或 npm i -g anywhere
 cd ./dist
 anywhere
 ```
