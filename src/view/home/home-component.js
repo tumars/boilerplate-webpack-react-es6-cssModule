@@ -10,10 +10,10 @@ class HomeComponent extends Component {
 		this.props.handleGetUser()
 	}
 	render() {
-		const { helloText, userIp, hanldeChangHello, hanldeGoList} = this.props
+		const { helloText, userInfo, hanldeChangHello, hanldeGoList} = this.props
 		return (
 			<div className={style.wrap}>
-				<p className={style.tip}>来自 {userIp} 的朋友</p>
+				<p className={style.tip}>你的浏览器可视面积为：{userInfo} </p>
 				<p className={style.hello}>{helloText}</p>
 				<div className={style.button} onClick={()=>hanldeChangHello()}>切换文字</div>
 				<div className={style.button} onClick={()=>hanldeGoList()}>去列表页</div>
@@ -24,7 +24,7 @@ class HomeComponent extends Component {
 
 HomeComponent.propTypes = {
 	helloText: PropTypes.string,
-	userIp: PropTypes.number,
+	userInfo: PropTypes.string,
 	handleGetUser: PropTypes.func,
 	hanldeChangHello: PropTypes.func,
 	hanldeGoList: PropTypes.func

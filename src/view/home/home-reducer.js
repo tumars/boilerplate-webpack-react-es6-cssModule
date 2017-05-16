@@ -1,18 +1,18 @@
 /*-----------------------------------------------------------------*/
 /*Home Reducer*/
 /*-----------------------------------------------------------------*/
-const textBox = ['你好，我是 webpack v2.x 的示例 domo', 'Hello, I am a boilerplate for webpack v2.x ']
+const textBox = ['你好，我是个简单的示例 domo', 'Hello, I am a simple boilerplate']
 const initHomeInfo = {
     helloText: textBox[0],
-    userIp: null
+    userInfo: null
 }
 
 const HomeReducer = (state = initHomeInfo, action) => {
     switch (action.type) {
         case 'CHANGE_HELLO':
             return Object.assign({}, state, {helloText: state.helloText === textBox[0] ? textBox[1] : textBox[0]})
-        case 'GET_USER_IP':
-            return Object.assign({}, state, {userIp: action.ip})
+        case 'GET_USER_INFO':
+            return Object.assign({}, state, {userInfo: action.info})
         default:
             return state
     }
@@ -24,7 +24,7 @@ const HomeReducer = (state = initHomeInfo, action) => {
 /*-----------------------------------------------------------------*/
 
 const changeText = () => ({type: 'CHANGE_HELLO'})
-const getUserIp = (ip) => ({type: 'GET_USER_IP', ip})
+const getUserInfo = (info) => ({type: 'GET_USER_INFO', info})
 
 
-export { HomeReducer, changeText, getUserIp }
+export { HomeReducer, changeText, getUserInfo }

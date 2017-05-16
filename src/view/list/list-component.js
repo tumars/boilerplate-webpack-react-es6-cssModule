@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import MyList from 'MyList'
-import ListErr from 'ListErr'
-import TabSwitch from 'TabSwitch'
+import MyList from 'co-my-list'
+import ListErr from 'co-list-err'
+import TabSwitch from 'co-tab-switch'
 import style from './list.less'
 
 class ListComponent extends Component {
@@ -10,7 +10,8 @@ class ListComponent extends Component {
         super(props)
     }
 	componentDidMount() {
-		this.props.handleGetData('movie', 1)
+		const movieData = this.props.movieListInfo.data
+		movieData && movieData.length == 0 && this.props.handleGetData('movie', 1)
 	}
 	handleTabChange(now) {
 		const bookData = this.props.bookListInfo.data
@@ -25,10 +26,8 @@ class ListComponent extends Component {
 		return (
 			<div className={style.panel}>
 				{this.renderList(data)}
-				<div className={style.panel_bottom}>
-					<div>{now}/{total} 页</div>
-					<div onClick={()=>handleGetData(type, now + 1)}>查看更多</div>
-				</div>
+				<div className={style.pagina}>{now}/{total} 页</div>
+				<div className={style.more} onClick={()=>handleGetData(type, now + 1)}>查看更多</div>
 			</div>
 		)
 	}
@@ -51,7 +50,7 @@ class ListComponent extends Component {
 		return (
 			<div className={style.wrap}>
 				{this.renderSwitch()}
-				<div onClick={()=>handleGoBack()}>返回首页</div>
+				<div className={style.button} onClick={()=>handleGoBack()}>返回首页</div>
 			</div>
 		)
 	}

@@ -1,10 +1,8 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var DashboardPlugin = require('webpack-dashboard/plugin');
 var config = require('./webpack.dev.config');
 
 var compiler = webpack(config);
-compiler.apply(new DashboardPlugin());
 var server = new WebpackDevServer(compiler, {
 	publicPath: config.output.publicPath,
 	hot: true,

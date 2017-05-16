@@ -1,6 +1,8 @@
 const { resolve } = require('path');
 var webpack = require('webpack');
 
+process.noDeprecation = true
+
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
@@ -29,7 +31,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify('dev')  
+                'NODE_ENV': JSON.stringify('development')  
             }
         })
     ],

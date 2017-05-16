@@ -1,0 +1,37 @@
+.list {
+    padding-top: 10px;
+}
+.single {
+    text-align: left;
+    line-height: 2.5;
+    &:nth-child(2n+1) {
+        background-color: #eee
+    }
+    div {
+        display: inline-block;
+        padding: 0 20px;
+        text-align: center;
+    }
+}
+
+
+/* 动画 */
+.slideEnter {
+    opacity: 0.01;
+    transform: scale(.8);
+}
+.slideEnterActive {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 100ms linear, opacity 100ms linear;
+}
+
+.slideLeave {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.slideLeaveActive {
+    opacity: 0.01;
+    transform: translate(0, 2rem) scale(.8);
+    transition: transform 200ms ease-in, opacity 200ms linear;
+}

@@ -20,13 +20,11 @@ const ListReducer = (state = initListInfo, action) => {
             {
                 const { target, list } = action
                 let targetName = target == 'movie' ? 'movieListInfo' : 'bookListInfo'
-                let info = {}
-                console.log(list)
-                info.total = list.total
-                info.now = list.now
-
-                console.log(list.now)
-                info.data = state[targetName].data.concat(list.data)
+                let info = {
+                    total: list.total,
+                    now: list.now,
+                    data: state[targetName].data.concat(list.data)
+                }
 
                 return Object.assign({}, state, {[targetName]: info})
             }

@@ -1,0 +1,35 @@
+.fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 16px;
+}
+.notfund {
+    padding-top: 50px;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.slideEnter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+.slideEnterActive {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 500ms ease, opacity 500ms ease;
+}
+
+.slideLeave {
+    opacity: 1;
+    transform: translate(0, 0) scale(.9);
+}
+.slideLeaveActive {
+    opacity: 0;
+    transform: translateX(-100%) scale(.7);
+    transition: transform 500ms ease, opacity 500ms linear;
+}

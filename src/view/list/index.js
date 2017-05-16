@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import history from 'myhistory'
-import { addList } from './listReducer'
-import ListComponent from './listComponent.js'
-import Dialog from 'Dialog'
+import { addList } from './list-reducer'
+import ListComponent from './list-component.js'
+import Dialog from 'co-dialog'
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 				.then(list => list && dispatch(addList(type, list)))
 		},
 		handleGoBack() {
-			history.go(-1)
+			history.replace('/home')
 		}
 	}	
 }

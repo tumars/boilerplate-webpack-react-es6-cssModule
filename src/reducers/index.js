@@ -1,5 +1,5 @@
-import { HomeReducer } from '../view/home/homeReducer'
-import { ListReducer } from '../view/list/ListReducer'
+import { HomeReducer } from '../view/home/home-reducer'
+import { ListReducer } from '../view/list/List-reducer'
 import { combineReducers } from 'redux'
 
 
