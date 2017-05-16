@@ -28,8 +28,10 @@
 - [x] less 以及 autoprefixer 
 - [x] 使用 cssModule
 - [x] 小于 8k 图片转化为 base64
+- [x] 组件内图标使用 svg
 - [x] 文件压缩、添加 MD5
 - [x] 引入 babel-polyfill, whatwg-fetch， 使用 ES6, Fetch
+- [x] 使用 Redux DevTools ([安装浏览器插件](https://github.com/zalmoxisus/redux-devtools-extension))
 
 ---------
 
