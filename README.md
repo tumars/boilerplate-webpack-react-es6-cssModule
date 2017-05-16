@@ -41,7 +41,7 @@
 
 
 ## 使用
-本项目使用`yarn`作为包管理，也可替换为`npm`。
+本项目使用`yarn`作为包管理，也可替换为`npm`。两者的差异请参阅[从 npm 客户端迁移](https://yarnpkg.com/zh-Hans/docs/migrating-from-npm)。无论使用哪个都建议将安装源替换为[淘宝镜像](https://npm.taobao.org/)。 
 
 #### 安装
 ```
