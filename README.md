@@ -6,14 +6,17 @@
 
 ## 主要包及版本
 - 包管理
+
 ![https://yarnpkg.com](https://img.shields.io/badge/yarn-v0.21.3-brightgreen.svg)
 
 - 依赖
+
 ![https://github.com/facebook/react](https://img.shields.io/badge/react-v15.5.4-blue.svg)
 ![https://reacttraining.com/react-router](https://img.shields.io/badge/react--router-v4.1.1-blue.svg)
 ![https://github.com/reactjs/redux](https://img.shields.io/badge/redux-v3.6.1-blue.svg)
 
 - 工具
+
 ![https://github.com/webpack/webpack](https://img.shields.io/badge/webpack-v2.5.1-orange.svg)
 ![https://github.com/eslint/eslint](https://img.shields.io/badge/eslint-v3.19-orange.svg)
 ![https://github.com/babel/babel](https://img.shields.io/badge/babel--loader-v7.0.0-orange.svg)
