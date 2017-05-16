@@ -67,6 +67,8 @@ yarn run mock
 
 接口将会在本地 3003 端口启动。
 
+![iterm2](./img/iterm2.png)
+
 #### 打包
 Windows 用户使用：
 ```
@@ -88,8 +90,6 @@ cd ./dist
 anywhere
 ```
 页面会自动打开（地址要加上 /#/home）
-
-![iterm2](./img/iterm2.png)
 
 ## 主要版本变化
 
