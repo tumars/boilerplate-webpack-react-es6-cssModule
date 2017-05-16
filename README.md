@@ -35,7 +35,7 @@
 
 #### 页面效果如下：
 
-![demo](./demo.gif)
+![demo](./img/demo.gif)
 
 
 ## 使用
@@ -54,6 +54,8 @@ yarn start
 ```
 
 访问 `http://localhost:3000/#/home` 查看页面。
+
+![iterm1](./img/iterm1.gif)
 
 #### mock 接口数据
 本项目的接口数据通过 `json-server` 配置，需全局安装并启动：
@@ -86,6 +88,8 @@ cd ./dist
 anywhere
 ```
 页面会自动打开（地址要加上 /#/home）
+
+![iterm2](./img/iterm2.gif)
 
 ## 主要版本变化
 
