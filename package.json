@@ -8,7 +8,7 @@
     "mock": "json-server mock/db.json --port 3003",
     "start": "node server.js",
     "lint": "eslint src",
-    "build-mac": "rm dist && webpack --config ./webpack.prod.config.js --progress --profile --colors",
+    "build-mac": "rm -rf dist && webpack --config ./webpack.prod.config.js --progress --profile --colors",
     "build-win": "del dist && webpack --config ./webpack.prod.config.js --progress --profile --colors"
   },
   "author": "tumars",

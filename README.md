@@ -33,8 +33,6 @@
 - [x] 引入 babel-polyfill, whatwg-fetch， 使用 ES6, Fetch
 - [x] 使用 Redux DevTools ([安装浏览器插件](https://github.com/zalmoxisus/redux-devtools-extension))
 
----------
-
 #### 页面效果如下：
 
 ![demo](./demo.gif)
