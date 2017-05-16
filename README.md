@@ -61,7 +61,7 @@ yarn start
 本项目的接口数据通过 `json-server` 配置，需全局安装并启动：
 （打开新命令行窗口）
 ```
-yarn i -g json-server
+yarn global add json-server 或 npm i -g json-server 
 yarn run mock
 ```
 
@@ -83,7 +83,7 @@ yarn run build-mac
 
 可以使用`anywhere`工具建立本地服务查看页面：
 ```
-yarn --global anywhere
+yarn --global add anywhere 或 npm i -g anywhere
 cd ./dist
 anywhere
 ```
