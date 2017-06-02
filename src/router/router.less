@@ -5,7 +5,12 @@
     top: 0;
     bottom: 0;
     width: 100%;
+    max-width: 768px;
     font-size: 16px;
+    box-shadow: -1px 1px 40px 2px #000;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {display:none}
 }
 .notfund {
     padding-top: 50px;
@@ -16,9 +21,10 @@
 
 .slideEnter {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(80%);
 }
 .slideEnterActive {
+    z-index: 10;
     opacity: 1;
     transform: translateX(0);
     transition: transform 500ms ease, opacity 500ms ease;
@@ -26,10 +32,13 @@
 
 .slideLeave {
     opacity: 1;
-    transform: translate(0, 0) scale(.9);
+    filter: blur(0);
+    transform: translateX(0) scale(.9);
 }
 .slideLeaveActive {
+    z-index: 0;
     opacity: 0;
-    transform: translateX(-100%) scale(.7);
-    transition: transform 500ms ease, opacity 500ms linear;
+    filter: blur(.9);
+    transform: translateX(-30%) scale(.7);
+    transition: transform 500ms ease, opacity 500ms ease,filter 200ms ease;
 }

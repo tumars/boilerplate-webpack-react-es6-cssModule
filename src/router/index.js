@@ -26,11 +26,8 @@ const Layout = ({ match: { params } }) => {
 	)
 
 	let route
-
+	console.log(params)
 	switch(params.path) {
-		case 'home': 
-			route = page(<Home/>)
-			break;
 		case 'list':
 			route = page(<List/>)
 			break;
@@ -43,7 +40,7 @@ const Layout = ({ match: { params } }) => {
 const App = () => (
 	<Provider store={ store }>
 		<HashRouter>
-			<Route render={({ location }) => (
+			<Route path="/" render={({ location }) => (
 				<div className={style.fill}>
 					<ReactCSSTransitionGroup 
 						component='div'
@@ -56,6 +53,7 @@ const App = () => (
 						transitionEnterTimeout={500} 
 						transitionLeaveTimeout={500}
 					>
+						<Route exact path="/" component={Home}/>
 						<Route
 							location={location}
 							key={location.pathname}
