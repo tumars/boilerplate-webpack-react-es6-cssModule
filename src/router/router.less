@@ -1,16 +1,12 @@
 .fill {
     position: absolute;
-    left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
     width: 100%;
-    max-width: 768px;
+    max-width: 640px;
+    margin: 0 auto;
     font-size: 16px;
     box-shadow: -1px 1px 40px 2px #000;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {display:none}
+    background: #fff;
 }
 .notfund {
     padding-top: 50px;
@@ -20,7 +16,7 @@
 
 
 .slideEnter {
-    opacity: 0;
+    opacity: .8;
     transform: translateX(80%);
 }
 .slideEnterActive {
@@ -33,12 +29,12 @@
 .slideLeave {
     opacity: 1;
     filter: blur(0);
-    transform: translateX(0) scale(.9);
+    transform: translateX(0) scale(1);
 }
 .slideLeaveActive {
     z-index: 0;
-    opacity: 0;
+    opacity: .5;
     filter: blur(.9);
-    transform: translateX(-30%) scale(.7);
-    transition: transform 500ms ease, opacity 500ms ease,filter 200ms ease;
+    transform: translateX(5%) scale(.95);
+    transition: transform 500ms ease, opacity 500ms ease, filter 200ms ease;
 }

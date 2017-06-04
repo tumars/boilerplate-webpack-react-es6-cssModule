@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 				.then(list => list && dispatch(addList(type, list)))
 		},
 		handleGoBack() {
-			history.replace('/home')
+			history.goBack()
 		}
 	}	
 }

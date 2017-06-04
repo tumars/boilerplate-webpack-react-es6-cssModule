@@ -16,21 +16,24 @@ import style from './router.less'
 import '../styles/reset.less'
 
 
-/*如果想要页面过渡效果，请参考下面 Layout 与 App 组件写法*/
-/*或查阅 react-router 官方示例文档 https://reacttraining.com/react-router/web/example/animated-transitions*/
-const Layout = ({ match: { params } }) => {
-	const page = (content) => (
-		<div className={style.fill}>
+/* 如果想要页面过渡效果，请参考下面 Layout 与 App 组件写法 */
+/* 或查阅 react-router 官方示例文档 https://reacttraining.com/react-router/web/example/animated-transitions */
+const page = (content) => (
+		<div className={style.fill} style={{height:window.innerHeight+'px'}}>
 			{content}
 		</div>
 	)
 
+const Layout = ({match: { params } }) => {
 	let route
 	console.log(params)
 	switch(params.path) {
+		case 'home':
+			route = page(<Home/>)
+			break
 		case 'list':
 			route = page(<List/>)
-			break;
+			break
 		default:
 			route = <div className={style.notfund}>Oops！404啦！</div>
 	}
@@ -41,7 +44,7 @@ const App = () => (
 	<Provider store={ store }>
 		<HashRouter>
 			<Route path="/" render={({ location }) => (
-				<div className={style.fill}>
+				<div>
 					<ReactCSSTransitionGroup 
 						component='div'
 						transitionName={{
@@ -53,7 +56,6 @@ const App = () => (
 						transitionEnterTimeout={500} 
 						transitionLeaveTimeout={500}
 					>
-						<Route exact path="/" component={Home}/>
 						<Route
 							location={location}
 							key={location.pathname}
@@ -72,7 +74,7 @@ const App = () => (
 	<Provider store={ store }>
 		<HashRouter>
 			<Switch> // import { Switch } from 'react-router'
-				<Route path={'/home'} component={Home} />
+				<Route exact path={'/'} component={Home} />
 				<Route path={'/list'} component={List} />
 			</Switch>
 		</HashRouter>
