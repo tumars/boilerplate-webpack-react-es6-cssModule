@@ -82,7 +82,9 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
         modules: ['node_modules', './src/module', './src/action', './src/util/'],
         alias: {
-            'co': path.join(__dirname, './src/util/co')
+            'my-util': path.join(__dirname, './src/libs/my-util'),
+            'action': path.join(__dirname, './src/action/index.js'),
+            'stroe': path.join(__dirname, './src/store/index.js')
         }
     }
 };

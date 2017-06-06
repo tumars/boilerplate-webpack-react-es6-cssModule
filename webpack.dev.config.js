@@ -72,9 +72,9 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
         modules: ['node_modules', './src/module', './src/action', './src/util/'],
         alias: {
-            'co': resolve(__dirname, './src/util/co'),
+            'my-util': resolve(__dirname, './src/libs/my-util'),
             'action': resolve(__dirname, './src/action/index.js'),
-            'stroe': resolve(__dirname, './src/store/index.js'),
+            'stroe': resolve(__dirname, './src/store/index.js')
         }
     }
 };

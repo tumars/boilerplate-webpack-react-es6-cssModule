@@ -1,20 +1,22 @@
 import { connect } from 'react-redux'
-import history from 'myhistory'
+import _ut from 'my-util'
 import { changeText, getUserInfo } from './home-reducer'
 import HomeComponent from './home-component.js'
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
 	return {
 		handleGetUser() {
-			const wid = window.innerWidth
-			const hei = window.innerHeight
+			const wid = _ut.fixNum(window.innerWidth)
+			const hei = _ut.fixNum(window.innerHeight)
+
 			dispatch(getUserInfo(`${wid}*${hei}`))
 		},
 		hanldeChangHello() {
+			
 			dispatch(changeText())
 		},
 		hanldeGoList() {
-			history.push('/list')
+			props.history.push('/list')
 		}
 	}	
 }

@@ -4,6 +4,8 @@ import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
 import store from '../store'
+import createHistory from 'history/createHashHistory'
+
 
 /*引入页面组件*/
 import Home from '../view/home'
@@ -15,24 +17,26 @@ import style from './router.less'
 /*引入全局样式*/
 import '../styles/reset.less'
 
+/*定义 history*/
+const CustomHistory = createHistory()
+
 
 /* 如果想要页面过渡效果，请参考下面 Layout 与 App 组件写法 */
-/* 或查阅 react-router 官方示例文档 https://reacttraining.com/react-router/web/example/animated-transitions */
-const page = (content) => (
+/* 更多了解请查阅 react-router 官方示例文档 https://reacttraining.com/react-router/web/example/animated-transitions */
+const Layout = (props) => {
+	let route
+
+	const page = (content) => (
 		<div className={style.fill} style={{height:window.innerHeight+'px'}}>
 			{content}
 		</div>
 	)
-
-const Layout = ({match: { params } }) => {
-	let route
-	console.log(params)
-	switch(params.path) {
+	switch(props.match.params.path) {
 		case 'home':
-			route = page(<Home/>)
+			route = page(<Home {...props}/>)
 			break
 		case 'list':
-			route = page(<List/>)
+			route = page(<List {...props}/>)
 			break
 		default:
 			route = <div className={style.notfund}>Oops！404啦！</div>
@@ -42,8 +46,8 @@ const Layout = ({match: { params } }) => {
 
 const App = () => (
 	<Provider store={ store }>
-		<HashRouter>
-			<Route path="/" render={({ location }) => (
+		<HashRouter history={CustomHistory}>
+			<Route path="/" render={({ location, history }) => (
 				<div>
 					<ReactCSSTransitionGroup 
 						component='div'
@@ -57,6 +61,7 @@ const App = () => (
 						transitionLeaveTimeout={500}
 					>
 						<Route
+							history={history}
 							location={location}
 							key={location.pathname}
 							path="/:path"
@@ -72,9 +77,9 @@ const App = () => (
 /*如果不需要页面过渡效果，请使用下面更简单易懂的写法*/
 /*const App = () => (
 	<Provider store={ store }>
-		<HashRouter>
+		<HashRouter history={CustomHistory}>
 			<Switch> // import { Switch } from 'react-router'
-				<Route exact path={'/'} component={Home} />
+				<Route exact path={'/home'} component={Home} />
 				<Route path={'/list'} component={List} />
 			</Switch>
 		</HashRouter>

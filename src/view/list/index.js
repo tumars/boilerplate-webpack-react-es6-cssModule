@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
-import history from 'myhistory'
 import { addList } from './list-reducer'
 import ListComponent from './list-component.js'
 import Dialog from 'co-dialog'
 
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch,props) => {
 	return {
 		handleGetData(type, page) {
 			fetch(`http://localhost:3003/${type}${page}`)
@@ -19,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 				.then(list => list && dispatch(addList(type, list)))
 		},
 		handleGoBack() {
-			history.goBack()
+			props.history.goBack()
 		}
 	}	
 }
