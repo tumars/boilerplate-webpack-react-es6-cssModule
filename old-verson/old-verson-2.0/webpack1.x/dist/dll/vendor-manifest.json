@@ -1,0 +1,7 @@
+{
+  "name": "vendor_library",
+  "content": {
+    "./node_modules/react/dist/react.min.js": 1,
+    "./node_modules/react-dom/dist/react-dom.min.js": 2
+  }
+}

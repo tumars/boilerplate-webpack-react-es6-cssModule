@@ -1,0 +1,41 @@
+:global{
+    @c1: #fba112;
+    @c7: #666666;
+
+    .tj-table__content {
+        display: table;
+        width: 100%;
+        line-height: 2.8;
+        font-size: 26px;
+        overflow: hidden;
+    }
+
+    .tj-table__row {
+        display: table-row;
+        // justify-content: space-between;
+        width: 100%;
+        overflow: hidden;
+
+        &:nth-child(2n+1) {
+            background: #f6f4f4;
+        }
+    }
+
+    th.tj-table__row {
+        background: #f6f4f4;
+    }
+
+    .tj-table__col {
+        // flex-grow: 1;
+        display: table-cell;
+        text-align: center;
+        word-break: break-all;
+    }
+
+    .tj-table__col--top {
+        .tj-table__col;
+        font-weight: normal
+    }
+
+}
+

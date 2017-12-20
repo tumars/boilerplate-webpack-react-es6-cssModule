@@ -1,0 +1,48 @@
+.wrap {
+    position: relative;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+}
+
+.pagination-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.pagination {
+    position: absolute;
+    // display: inline-block;
+    bottom: 10px;
+    width: 100%;
+    height: 25px;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+    overflow: hidden;
+    // pointer-events: none
+}
+
+.bullet {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    padding: 0;
+    background: #d4a143;
+    border-radius: 50%;
+}
+
+.bullet-active {
+    .bullet;
+    background: #a32229;
+}

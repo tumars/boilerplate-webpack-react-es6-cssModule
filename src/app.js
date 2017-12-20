@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './router';
 import { AppContainer } from 'react-hot-loader';
 
-
 if(process.env.NODE_ENV === 'development') {
     const render = (Component) => {
 		ReactDOM.render(

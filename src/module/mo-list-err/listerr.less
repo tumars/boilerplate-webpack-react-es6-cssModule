@@ -1,0 +1,69 @@
+.content {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+.errtip {
+    position: relative;
+    margin-top: 20px;
+    // filter: blur(2px);
+    // filter: ~"progid\:DXImageTransform\.Microsoft\.Blur(PixelRadius\=1, MakeShadow\=false)"; /* IE6~IE9 */
+    div {
+        position: relative;
+        display: block;
+        height: 20px;
+        margin: 0 0 18px;
+        background: #ddd;
+
+        &::before {
+            content: "";
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #eee;
+            animation: progressactive 1s infinite ease-in-out;
+        }
+
+        &:nth-child(1) {width: 30%; animation: ball-spin .5s .1s infinite ease-in-out;}
+        &:nth-child(2) {width: 20%; animation: ball-spin .5s .3s infinite ease-in-out;margin-bottom: 20px;}
+        &:nth-child(3) {width: 60%; animation: ball-spin .5s .3s infinite ease-in-out;}
+        &:nth-child(4) {width: 80%; animation: ball-spin .5s .1s infinite ease-in-out;}
+        &:nth-child(5) {width: 50%; animation: ball-spin .5s .1s infinite ease-in-out;}
+    }
+}
+.word {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+    animation: fadein .8s infinite;
+}
+
+
+@keyframes fadein {
+    0%{
+        opacity: 1;
+    }
+    50% {
+        opacity: .7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes progressactive {
+  0% {
+    opacity: 0.8;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 100%;
+  }
+}

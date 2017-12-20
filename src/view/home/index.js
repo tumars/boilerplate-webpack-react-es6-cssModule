@@ -1,30 +1,25 @@
+import React from 'react'
 import { connect } from 'react-redux'
-import _ut from 'my-util'
-import { changeText, getUserInfo } from './home-reducer'
+import Dialog from 'mo-dialog'
 import HomeComponent from './home-component.js'
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		handleGetUser() {
-			const wid = _ut.fixNum(window.innerWidth)
-			const hei = _ut.fixNum(window.innerHeight)
-
-			dispatch(getUserInfo(`${wid}*${hei}`))
+		initData() {
+			console.log('init index')
 		},
-		hanldeChangHello() {
-			
-			dispatch(changeText())
-		},
-		hanldeGoList() {
+		goListPage() {
 			props.history.push('/list')
+		},
+		openDialog() {
+			Dialog.alert(<p>Hello from the <b style={{color:"#f496ce"}}>Moon~</b></p>) 
 		}
 	}	
 }
 	
 const mapStateToProps = (state) => {
     return {
-        helloText: state.HomeReducer.helloText,
-		userInfo: state.HomeReducer.userInfo
+		...state.HomeReducer
     }
 }
 

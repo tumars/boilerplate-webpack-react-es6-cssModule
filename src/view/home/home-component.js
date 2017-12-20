@@ -1,33 +1,40 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import CSSModules from 'react-css-modules'
+import Button from 'mo-button'
+import UserInfo from 'layout/user-info'
 import style from './home.less'
 
+@CSSModules(style, {handleNotFoundStyleName: 'ignore'})
 class HomeComponent extends Component {
 	constructor(props) {
         super(props)
     }
 	componentDidMount() {
-		this.props.handleGetUser()
+		this.props.initData()
 	}
 	render() {
-		const { helloText, userInfo, hanldeChangHello, hanldeGoList} = this.props
+		const { 
+			openDialog, 
+			goListPage,
+			countValue
+		} = this.props
+		
 		return (
-			<div className={style.wrap}>
-				<p className={style.tip}>你的浏览器可视面积为：{userInfo} </p>
-				<p className={style.hello}>{helloText}</p>
-				<div className={style.button} onClick={()=>hanldeChangHello()}>切换文字</div>
-				<div className={style.button} onClick={()=>hanldeGoList()}>去列表页</div>
+			<div styleName="wrap">
+				<UserInfo />
+				<p styleName="hello">你好，我是个简单的示例 domo</p>
+				<p>{countValue}</p>
+				<Button onClick={goListPage}>去列表页</Button>
+				<Button onClick={openDialog}>打开一个弹框</Button>
 			</div>
 		)
 	}
 }
 
 HomeComponent.propTypes = {
-	helloText: PropTypes.string,
-	userInfo: PropTypes.string,
-	handleGetUser: PropTypes.func,
-	hanldeChangHello: PropTypes.func,
-	hanldeGoList: PropTypes.func
+	initData: PropTypes.func,
+	goListPage: PropTypes.func
 }
 
 export default HomeComponent

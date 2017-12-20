@@ -1,0 +1,36 @@
+:global{
+.opa(@a:0.8){
+	opacity: @a;
+}  
+.btn-primary {
+	display: block;
+	width: 230px;
+	line-height: 2;
+	margin: 20px auto;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background-color: #49A0FF;
+	border-radius: 3px;
+	box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+	cursor: pointer;
+}
+
+.btn-positive {
+	 .btn-primary ; 
+	background-color: green;
+}
+
+.btn-dialog {
+	 .btn-primary ; 
+	background-color: #f40;
+}
+
+.btn-disabled {
+	 .btn-primary ;
+	 .opa(0.5) ; 
+	background-color: #aaa;
+}
+}

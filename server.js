@@ -7,6 +7,7 @@ var server = new WebpackDevServer(compiler, {
 	publicPath: config.output.publicPath,
 	hot: true,
 	historyApiFallback: true,
+	inline: true,
 	stats: {
 		colors: true,
 		hash: false,

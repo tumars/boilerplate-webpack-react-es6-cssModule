@@ -1,0 +1,90 @@
+.slide-appear,
+.slide-enter {
+    opacity: 0;
+    transform: translate(100%);
+}
+
+.slide-appear-active,
+.slide-enter-active {
+    opacity: 1;
+    transform: translate(0);
+    transition: transform 500ms ease, opacity 500ms ease-in;
+}
+
+.slide-exit {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.slide-exit-active {
+    opacity: 0.5;
+    transform: translate(-100%);
+    transition: transform 500ms ease, opacity 500ms ease-out;
+}
+
+
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-appear-active,
+.fade-enter-active {
+  transition: opacity .3s linear;
+  opacity: 1;
+}
+
+.fade-exit {
+  transition: opacity .2s linear;
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}
+
+
+
+
+.spread-enter {
+    opacity: 0.01;
+    transform: scale(.8);
+}
+.spread-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 100ms linear, opacity 100ms linear;
+}
+
+.spread-exit {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.spread-exit-active {
+    opacity: 0.01;
+    transform: translate(0, 2rem) scale(.8);
+    transition: transform 200ms ease-in, opacity 200ms linear;
+}
+
+
+
+
+.pop-enter {
+    opacity: 0.01;
+    transform: scale(.8);
+}
+.pop-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 100ms linear, opacity 100ms linear;
+}
+
+.pop-exit {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.pop-exit-active {
+    opacity: 0.01;
+    transform: translate(0, 150px) scale(.8);
+    transition: transform 200ms ease-in, opacity 200ms linear;
+}

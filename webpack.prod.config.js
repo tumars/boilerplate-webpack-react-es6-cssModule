@@ -84,7 +84,9 @@ module.exports = {
         alias: {
             'my-util': path.join(__dirname, './src/libs/my-util'),
             'action': path.join(__dirname, './src/action/index.js'),
-            'stroe': path.join(__dirname, './src/store/index.js')
+            'stroe': path.join(__dirname, './src/store/index.js'),
+            'layout': resolve(__dirname, './src/layout'),
+            'reducers': resolve(__dirname, './src/reducers')
         }
     }
 };

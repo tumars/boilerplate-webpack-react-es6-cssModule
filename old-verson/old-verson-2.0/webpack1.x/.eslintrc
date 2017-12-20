@@ -1,0 +1,25 @@
+{
+  "ecmaFeatures": {
+    "jsx": true,
+    "es6": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+     no-empty: ["error", { "allowEmptyCatch": true }],
+    "strict": [2, "never"],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-console": ["error", { allow: ["warn", "error", "log"] }]
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}
+

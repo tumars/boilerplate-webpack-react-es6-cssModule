@@ -1,10 +1,19 @@
 const _ut = (function() {
-    var fixNum = function(num) {
+    const fixNum = function(num) {
         return num.toFixed(2)
+    }
+
+    const myfetch = async function(url, option) {
+        const res = await fetch(url,option)
+        if (!res.ok) {
+            return Promise.reject(res)
+        } 
+        return res.json()
     }
     
     return {
-        fixNum: fixNum
+        fixNum,
+        fetch: myfetch
     }
 })()
 

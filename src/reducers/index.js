@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux'
-import { HomeReducer } from '../view/home/home-reducer'
-import { ListReducer } from '../view/list/list-reducer'
-
+import { UserReducer } from './user-info'
+import { ListReducer } from './data-list'
 
 export default combineReducers({
-    HomeReducer,
+    UserReducer,
     ListReducer
 })

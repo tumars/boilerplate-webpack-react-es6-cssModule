@@ -4,7 +4,8 @@
 const textBox = ['你好，我是个简单的示例 domo', 'Hello, I am a simple boilerplate']
 const initHomeInfo = {
     helloText: textBox[0],
-    userInfo: null
+    userInfo: null,
+    countValue:0
 }
 
 const HomeReducer = (state = initHomeInfo, action) => {
@@ -13,6 +14,8 @@ const HomeReducer = (state = initHomeInfo, action) => {
             return Object.assign({}, state, {helloText: state.helloText === textBox[0] ? textBox[1] : textBox[0]})
         case 'GET_USER_INFO':
             return Object.assign({}, state, {userInfo: action.info})
+        case 'INCREMENT':
+            return Object.assign({}, state, {countValue: state.countValue + 1})
         default:
             return state
     }
@@ -24,7 +27,7 @@ const HomeReducer = (state = initHomeInfo, action) => {
 /*-----------------------------------------------------------------*/
 
 const changeText = () => ({type: 'CHANGE_HELLO'})
-const getUserInfo = (info) => ({type: 'GET_USER_INFO', info})
+const changeUserInfo = (info) => ({type: 'GET_USER_INFO', info})
 
 
-export { HomeReducer, changeText, getUserInfo }
+export { HomeReducer, changeText, changeUserInfo }
