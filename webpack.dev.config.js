@@ -29,8 +29,9 @@ module.exports = {
 			inject: true
 		}),
 		new webpack.ProvidePlugin({
-			fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-		}),
+            'Promise':'es6-promise',
+            'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+        }),
 		new webpack.DefinePlugin({
 			'process.env': {
 				'NODE_ENV': JSON.stringify('development')

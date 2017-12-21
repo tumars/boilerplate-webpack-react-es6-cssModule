@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "es6-promise": "^4.1.1",
     "history": "^4.6.1",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",

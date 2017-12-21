@@ -1,4 +1,5 @@
 var path = require('path');
+const { resolve } = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -30,7 +31,7 @@ module.exports = {
             comments: false
         }),
         new HtmlWebpackPlugin({
-            template: 'src/index.tpl.html',
+            template: './index.html',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
@@ -41,7 +42,7 @@ module.exports = {
                 keepClosingSlash: true,
                 minifyJS: true,
                 minifyCSS: true,
-                minifyURLs: true,
+                minifyURLs: true
             },
             inject: 'body',
             filename: 'index.html'
@@ -52,6 +53,7 @@ module.exports = {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
+            'Promise':'es6-promise',
             'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
         }),
         new webpack.DefinePlugin({
@@ -63,7 +65,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.js$/,
-            include: path.join(__dirname, 'src'),
+            include: resolve(__dirname, 'src'),
             use: ['babel-loader']
         }, {
             test: /\.less$/,
@@ -82,9 +84,9 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
         modules: ['node_modules', './src/module', './src/action', './src/util/'],
         alias: {
-            'my-util': path.join(__dirname, './src/libs/my-util'),
-            'action': path.join(__dirname, './src/action/index.js'),
-            'stroe': path.join(__dirname, './src/store/index.js'),
+            'my-util': resolve(__dirname, './src/libs/my-util'),
+            'action': resolve(__dirname, './src/action/index.js'),
+            'stroe': resolve(__dirname, './src/store/index.js'),
             'layout': resolve(__dirname, './src/layout'),
             'reducers': resolve(__dirname, './src/reducers')
         }
