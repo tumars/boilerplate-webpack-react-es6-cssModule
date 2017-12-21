@@ -1,3 +1,4 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import _ut from 'my-util'
@@ -15,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 				const list = await _ut.fetch(`http://localhost:3003/${type}${page}`)
 				dispatch(addList(type, list))
 			} catch(e) {
-				Dialog.alert('网络出错')
+				Dialog.alert(<small>网络出错, 请执行 <b>yarn mock</b> 启动接口</small>, {closeOnClickModal:true})
 				return false
 			}
 		}

@@ -35,6 +35,11 @@ function next(props) {
         }
     }))
 
+    // ReactDOM.createPortal(
+    //     component,
+    //     div
+    // );
+
     ReactDOM.render(component, div)
 }
 

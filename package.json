@@ -1,6 +1,6 @@
 {
-  "name": "tumars",
-  "version": "0.2.0",
+  "name": "react-boilerplate",
+  "version": "3.0",
   "description": "",
   "private": false,
   "license": "ISC",
@@ -60,6 +60,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "reselect": "^3.0.1",
+    "viewport-units-buggyfill": "^0.6.2",
     "whatwg-fetch": "^2.0.1"
   },
   "homepage": "https://github.com/tumars/boilerplate-webpack-react-es6-cssModule"

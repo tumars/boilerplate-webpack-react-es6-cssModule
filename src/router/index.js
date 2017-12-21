@@ -17,6 +17,9 @@ import style from './router.less'
 /*引入全局样式*/
 import '../styles/reset.less'
 
+/* 做 vw vh 的降级处理 */
+require('viewport-units-buggyfill').init();
+
 
 /*定义路由配置数组*/
 const routes_config = [
