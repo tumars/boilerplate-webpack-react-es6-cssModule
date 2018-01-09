@@ -4,7 +4,6 @@ import { HashRouter, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { TransitionGroup  } from 'react-transition-group'
 import { SlideTransition } from 'mo-transtion'
-// import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
 import store from '../store'
 
 /*引入页面组件*/
@@ -18,7 +17,7 @@ import style from './router.less'
 import '../styles/reset.less'
 
 /* 做 vw vh 的降级处理 */
-require('viewport-units-buggyfill').init();
+// require('viewport-units-buggyfill').init();
 
 
 /*定义路由配置数组*/
@@ -50,7 +49,6 @@ const App = () => (
 							</Switch>
 						</section>
 					</SlideTransition>
-					
 				</TransitionGroup>
 			}/>
 		</HashRouter>

@@ -66,7 +66,7 @@ module.exports = {
 			test: /\.(jpe?g|png|gif)$/i,
 			include: /src/,
 			use: [
-				'url-loader?limit=10000&name=img/[hash:8].[name].[ext]' // 图片小于8k就转化为 base64, 或者单独作为文件
+				'url-loader?limit=8192&name=img/[hash:8].[name].[ext]' // 图片小于8k就转化为 base64, 或者单独作为文件
 			]
 		}]
 	},

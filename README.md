@@ -115,7 +115,7 @@ Reselect 库可以创建可记忆的(Memoized)、可组合的 selector 函数。
 更多 Reselect 的访问跟介绍请访问：[https://github.com/reactjs/reselect](https://github.com/reactjs/reselect)
 
 #### <span id="Immutable">Immutable </span>
-Immutable 是指数据不可变，如果你的数据嵌套格式比较深的话可以考虑使用，可以防止 javascript 引用类型带来的可能会不小心改变了原始数据的隐患(在 react redux 里原始数据改变可能会导致重复渲染等问题)。
+Immutable 是指数据不可变，如果你的数据嵌套格式比较深的话可以考虑使用，可以防止 javascript 引用类型带来的可能会不小心改变了原始数据的隐患。
 
 当然如果你足够自信开发时会注意不改变原数据，就可以不用。本项目中是没使用的。
 
@@ -125,10 +125,13 @@ Immutable 是指数据不可变，如果你的数据嵌套格式比较深的话�
 ####  <span id="VWVH">REM 与 VW、VH </span>
 之前使用 rem 布局，后来看了[再聊移动端页面的适配](https://www.w3cplus.com/css/vw-for-layout.html),决定使用 vw、vh 布局，配合 [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport)和 [viewport-units-buggyfill](https://github.com/rodneyrehm/viewport-units-buggyfill) 能通过大部分机型的测试。
 
+> 经测试发现 viewport-units-buggyfill 在处理 base64 背景图片的 vw vh 时会导致图片出错，请注意。
+
 当然使用 rem 布局还是最安全的，提供三个方案：
-- 1. 参考本项目 v2 版本使用 js 控制 html 的 font-size 。
-- 2. 使用 [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem)。
-- 3. 使用淘宝的 [lib-flexible](https://github.com/amfe/lib-flexible)，这个是最推荐的。
+
+1. 参考本项目 v2 版本使用 js 控制 html 的 font-size 。
+2. 使用 [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem)。
+3. 使用淘宝的 [lib-flexible](https://github.com/amfe/lib-flexible)，这个是最推荐的。
 
 
 ####  <span id="async">async 函数  </span>
