@@ -35,11 +35,6 @@ function next(props) {
         }
     }))
 
-    // ReactDOM.createPortal(
-    //     component,
-    //     div
-    // );
-
     ReactDOM.render(component, div)
 }
 
@@ -60,9 +55,7 @@ class Dialog extends Component {
         return React.createElement(Modal, Object.assign({}, props, {
             onClose: () => {
                 setTimeout(()=>{
-                    // document.body.removeChild(this.node)
                     document.body.style.removeProperty('overflow')
-
                 }, 200)
 
                 if (props.onClose instanceof Function) {

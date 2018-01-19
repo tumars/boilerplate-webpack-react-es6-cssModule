@@ -8,8 +8,8 @@ class Carousel extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pw: 0
-            // activeIndex:this.props.activeIndex
+            // 宽度
+            pw: 0 
         }
 
 

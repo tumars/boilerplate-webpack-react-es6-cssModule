@@ -1,5 +1,5 @@
 .content {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     position: relative;
 }
@@ -14,24 +14,24 @@
         height: 20px;
         margin: 0 0 18px;
         background: #ddd;
+        border-radius: 8px;
+        overflow: hidden;
 
-        &::before {
+        span{
             content: "";
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            opacity: .8;
+            display: block;
+            width: 100%;
+            height: inherit;
             background: #eee;
-            animation: progressactive 1s infinite ease-in-out;
+            animation: progressactive 1s infinite linear;
         }
 
-        &:nth-child(1) {width: 30%; animation: ball-spin .5s .1s infinite ease-in-out;}
-        &:nth-child(2) {width: 20%; animation: ball-spin .5s .3s infinite ease-in-out;margin-bottom: 20px;}
-        &:nth-child(3) {width: 60%; animation: ball-spin .5s .3s infinite ease-in-out;}
-        &:nth-child(4) {width: 80%; animation: ball-spin .5s .1s infinite ease-in-out;}
-        &:nth-child(5) {width: 50%; animation: ball-spin .5s .1s infinite ease-in-out;}
+        &:nth-child(1) {width: 30%;}
+        &:nth-child(2) {width: 20%;margin-bottom: 30px;}
+        &:nth-child(3) {width: 60%;}
+        &:nth-child(4) {width: 80%;}
+        &:nth-child(5) {width: 50%;}
     }
 }
 .word {
@@ -49,21 +49,28 @@
     0%{
         opacity: 1;
     }
-    50% {
-        opacity: .7;
+    50%{
+        opacity: .8;
     }
     100% {
         opacity: 1;
     }
 }
 
+
 @keyframes progressactive {
-  0% {
-    opacity: 0.8;
-    width: 0;
-  }
-  100% {
-    opacity: 0;
-    width: 100%;
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: .8;
+        transform: translateX(50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }
