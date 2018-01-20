@@ -47,7 +47,6 @@ class ListTabs extends Component {
 	}
 	
 	render() {
-		console.log('data-list-tabs, render ok')
 		const { movieListInfo, bookListInfo } = this.props
 		const MovieList = this.renderTables('movie', movieListInfo)
 		const BookList = this.renderTables('book', bookListInfo)

@@ -10,10 +10,6 @@ const mapDispatchToProps = (dispatch,props) => {
 	}	
 }
 	
-// const mapStateToProps = () => {
-//     return null
-// }
-
 
 const List = connect(
 	null,

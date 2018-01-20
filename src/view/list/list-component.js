@@ -10,7 +10,6 @@ class ListComponent extends Component {
         super(props)
     }
 	render() {
-		console.log('list-view, render ok')
 		const { goBack } = this.props
 		return (
 			<div className={style.wrap}>
