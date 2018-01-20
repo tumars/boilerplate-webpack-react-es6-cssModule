@@ -6,33 +6,33 @@ import './tabs.less';
 
 
 class Tabs extends Component {
+    static Panel = Panel
     constructor(props) {
         super(props)
         this.state =  {
             activeIndex: this.props.activeIndex
         }
-        this.handleTabClick = this.handleTabClick.bind(this)
-        this.handleContentChange = this.handleContentChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
     
-    static Panel = Panel
-
     shouldComponentUpdate(nextProps, nextState) {
-        return this.state.activeIndex !== nextState.activeIndex
-    }
-
-    handleTabClick(i) {
-        const { activeIndex } = this.state
-        if(i !== activeIndex) {
-            this.setState({
-                activeIndex: i
-            })
-            this.props.onTabChange && this.props.onTabChange(activeIndex, i)
+        if (this.state.activeIndex !== nextState.activeIndex) {
+            return true
         }
+        if(this.props.children !== nextProps.children) {
+            return true
+        }
+        return true
     }
 
-    handleContentChange(perv, next) {
-        this.setState({activeIndex:next})
+    handleChange(nextIndex) {
+        const { activeIndex } = this.state
+        if(nextIndex !== activeIndex) {
+            this.setState({
+                activeIndex: nextIndex
+            })
+            this.props.onTabChange && this.props.onTabChange(activeIndex, nextIndex)
+        }
     }
 
     render() {
@@ -47,12 +47,12 @@ class Tabs extends Component {
                 <Nav 
                     titles={React.Children.map(panels, panel=>panel.props.title)}
                     activeIndex={activeIndex}
-                    onChange={this.handleTabClick}
+                    onChange={this.handleChange}
                 />
                 <Carousel 
                     className="tj-tabs-pane-wrap"
                     activeIndex={activeIndex}
-                    onChange={(perv, next)=>this.setState({activeIndex:next})}
+                    onChange={(perv, next)=>this.handleChange(next)}
                 >
                     {
                         React.Children.map(panels, (panel, i) => 

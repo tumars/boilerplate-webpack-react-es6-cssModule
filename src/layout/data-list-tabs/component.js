@@ -8,31 +8,30 @@ import Tabs from 'mo-tabs'
 import style from './list-tabs.less'
 
 @CSSModules(style)
-class ListComponent extends Component {
+class ListTabs extends Component {
 	constructor(props) {
-        super(props)
+		super(props)
+		this.handleTabChange = this.handleTabChange.bind(this)
 	}
 	
 	componentDidMount() {
 		this.props.initData()
-		this.props.getData('movie', 1)
 	}
 
-	handleTabChange(now) {
-		const  { bookListInfo: { data } } = this.props
-		now == 1 && data.length == 0 && this.props.getData('book', 1)
+	handleTabChange(index) {
+		const  { bookListInfo: { list } } = this.props
+		index == 1 && list.length == 0 && this.props.getData('book', 1)
 	}
 
-	renderTables(type, datas) {
+	renderTables(type, data={}) {
 		const { getData } = this.props
-		const { data, total, now } = datas
-		
+		const { list, total, now } = data
 		return (
 			<div styleName="panel">
 				{
-					data && data.length > 0 
+					list && list.length > 0 
 						? 	<div>
-								<SimpleList data={data} />
+								<SimpleList data={list} />
 								{
 									now < total &&
 									<Button onClick={()=>getData(type, now + 1)}>
@@ -48,6 +47,7 @@ class ListComponent extends Component {
 	}
 	
 	render() {
+		console.log('data-list-tabs, render ok')
 		const { movieListInfo, bookListInfo } = this.props
 		const MovieList = this.renderTables('movie', movieListInfo)
 		const BookList = this.renderTables('book', bookListInfo)
@@ -56,7 +56,7 @@ class ListComponent extends Component {
 			<div styleName="wrap">
 				<Tabs
 					activeIndex={0}
-					onTabChange={(prev, now)=> this.handleTabChange(now)}
+					onTabChange={(prev, next)=> this.handleTabChange(next)}
 				>
 					<Tabs.Panel title="电影">{MovieList}</Tabs.Panel>
 					<Tabs.Panel title="图书">{BookList}</Tabs.Panel>
@@ -66,10 +66,10 @@ class ListComponent extends Component {
 	}
 }
 
-ListComponent.propTypes = {
+ListTabs.propTypes = {
 	movieListInfo: PropTypes.object,
 	bookListInfo: PropTypes.object,
 	getData: PropTypes.func
 }
 
-export default ListComponent
+export default ListTabs

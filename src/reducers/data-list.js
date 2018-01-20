@@ -4,12 +4,14 @@
 
 const initListInfo = {
     movieListInfo: {
-        data: [],
+        isFetch: false,
+        list: [],
         total: 1,
         now: 0
     },
     bookListInfo: {
-        data: [],
+        isFetch: false,
+        list: [],
         total: 1,
         now: 0
     }
@@ -23,7 +25,7 @@ const ListReducer = (state = initListInfo, action) => {
                 let info = {
                     total: list.total,
                     now: list.now,
-                    data: state[targetName].data.concat(list.data)
+                    list: state[targetName].list.concat(list.data)
                 }
                 return Object.assign({}, state, {[targetName]: info})
             }

@@ -12,8 +12,8 @@ const Row = ({ value }) => (
 )
 
 const MyList = ({ data }) => {
-    const items = data.map((item, i) => (
-        <SpreadTransition key={i}>
+    const items = data.map(item => (
+        <SpreadTransition key={item[0]}>
             <Row value={item} />
         </SpreadTransition>
     ))
