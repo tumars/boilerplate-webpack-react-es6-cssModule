@@ -11,8 +11,8 @@ class Wraper extends Component {
     }
 
     render() {
-        const { isDot } = this.props
-        if(isDot) {
+        const { showDot } = this.props
+        if(showDot) {
             return <PaginationCarousel {...this.props}/>
         }
         
@@ -23,10 +23,8 @@ class Wraper extends Component {
 }
 
 Carousel.propTypes = {
-    isDot: PropTypes.bool
+    showDot: PropTypes.bool
 }
 
 
 export default Wraper
-
-// export default Carousel

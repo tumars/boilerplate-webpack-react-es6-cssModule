@@ -1,65 +1,64 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Carousel from '../mo-carousel'
+import { Panel, Nav} from './tabs-modules'
 import './tabs.less';
 
-const Panel = ({key, children, isActive }) => (
-    <div key={key} className={"tj-tabs-pane" + (isActive ? ' tj-tabs-pane-active' : ' tj-tabs-pane-active')}>
-        {children}
-    </div>
-)
 
 class Tabs extends Component {
+    static Panel = Panel
     constructor(props) {
         super(props)
         this.state =  {
             activeIndex: this.props.activeIndex
         }
+        this.handleChange = this.handleChange.bind(this)
     }
     
-    static Panel = Panel
-
-    handleTabClick(i) {
-        const { activeIndex } = this.state
-        if(i !== activeIndex) {
-            this.setState({
-                activeIndex: i
-            })
-            this.props.onTabChange && this.props.onTabChange(activeIndex, i)
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.activeIndex !== nextState.activeIndex) {
+            return true
         }
+        if(this.props.children !== nextProps.children) {
+            return true
+        }
+        return true
     }
 
+    handleChange(nextIndex) {
+        const { activeIndex } = this.state
+        if(nextIndex !== activeIndex) {
+            this.setState({
+                activeIndex: nextIndex
+            })
+            this.props.onTabChange && this.props.onTabChange(activeIndex, nextIndex)
+        }
+    }
 
     render() {
         const  { activeIndex } = this.state
         if(this.props.children.length==0) {
-            console.warn('missing Tabs children')
-            return null
+            return 'missing Tabs Panel'
         }
         const panels = this.props.children
-        const paneLen = panels.length
 
         return (
             <div ref={(n) => this.tabContent = n} className="tj-tabs-content">
-                <div className="tj-tabs-nav-wrap">
-                    {
-                        React.Children.map(panels, (panel, i) => 
-                            <div key={panel.title} className={`tj-tabs-nav ${activeIndex == i ? 'tj-tabs-nav-active' : ''}`} style={{width: 100/paneLen + "%"}} onClick={()=>this.handleTabClick(i)}>{ panel.props.title }</div>
-                        )
-                    }
-                    <div className="tj-tabs-activebar" style={{ width: 100/paneLen + "%",marginLeft:activeIndex*100/paneLen + "%"}}></div>
-                </div>
+                <Nav 
+                    titles={React.Children.map(panels, panel=>panel.props.title)}
+                    activeIndex={activeIndex}
+                    onChange={this.handleChange}
+                />
                 <Carousel 
                     className="tj-tabs-pane-wrap"
                     activeIndex={activeIndex}
-                    onChange={(perv, next)=>this.setState({activeIndex:next})}
+                    onChange={(perv, next)=>this.handleChange(next)}
                 >
                     {
                         React.Children.map(panels, (panel, i) => 
                             React.cloneElement(
-                                <Panel />,
+                                panel,
                                 {
-                                    ...panel.props,
                                     key: panel.props.title,
                                     isActive: activeIndex === i
                                 }

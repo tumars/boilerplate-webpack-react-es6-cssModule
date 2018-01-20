@@ -7,11 +7,6 @@ import styles from './carousel.less'
 class Carousel extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            pw: 0
-            // activeIndex:this.props.activeIndex
-        }
-
 
         // 正显示的元素位置
         this.activeIndex = this.props.activeIndex
@@ -34,52 +29,61 @@ class Carousel extends Component {
     }
     
     componentDidMount() {
-        setTimeout(()=>{
-            const { clientWidth: paneW } = this.carouselWarp
-            const { activeIndex } = this
-            const distance = -activeIndex * paneW
-            this.scaleW = paneW
-            this.totalX = distance
-            this.setState({pw: paneW})
-            this.moveCarousel(distance)
-        }, 0)
-       
+        const { activeIndex } = this
+        this.reset()
+        this.scrollTo(activeIndex)
     }
 
     componentWillReceiveProps(nextProps) {
         const { activeIndex } = this
         const { activeIndex: newActiveIndex } = nextProps
-
         if(newActiveIndex !== activeIndex) {
-            const distance = -newActiveIndex * this.scaleW
-            this.activeIndex = newActiveIndex
-            this.totalX = distance
-            this.toggleTransition()
-            this.moveCarousel(distance)
-        }
+            this.scrollTo(newActiveIndex)
+        } 
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate(nextProps) {
         const { activeIndex } = this
         const { activeIndex: newActiveIndex } = nextProps
-
-        if(nextState.pw) {return true}
         if(activeIndex !== newActiveIndex) {return true}
+        if(this.props.children != nextProps.children ) {return true}
 
-        return false
+        return true
+    }
+
+    reset() {
+        requestAnimationFrame(() => {
+            const {carouselWarp: { clientWidth} , slideList} = this
+            const { children } = slideList
+            this.scaleW = clientWidth
+            slideList.style.width = `${clientWidth * slideList.children.length}px`
+            slideList.style.display = 'none'
+            Array.prototype.forEach.call(children, (item)=>{
+                item.style.width = clientWidth + 'px'
+            })
+            slideList.style.display = 'flex'
+        })
+    }
+
+    scrollTo(index) {
+        const { scaleW } = this;
+        this.totalX = -index * scaleW
+        this.toggleTransition()
+        this.moveCarousel(-index * scaleW)
+        this.activeIndex = index
     }
 
     moveCarousel(distance) {
         requestAnimationFrame(()=>{
-            setCss3Style(this.carouselWarp, 'transform', 'translateX(' + distance + 'px)')
+            setCss3Style(this.slideList, 'transform', 'translateX(' + distance + 'px)')
         })
     }
 
     toggleTransition() {
-        setCss3Style(this.carouselWarp, 'transition', 'transform .2s cubic-bezier(.645,.045,.355,1)')
+        setCss3Style(this.slideList, 'transition', 'transform .2s cubic-bezier(.645,.045,.355,1)')
         setTimeout(()=> {
-            setCss3Style(this.carouselWarp, 'transition', 'none')
-        }, 300)
+            setCss3Style(this.slideList, 'transition', 'none')
+        }, 200)
     }
 
     startTouch(event) {
@@ -92,7 +96,7 @@ class Carousel extends Component {
         const { onMove } = this.props
         const { pageX, pageY } = event.targetTouches[0]
 
-        if(GetSlideDirection(this.startX, this.startY, pageX, pageY) == 3 ||  GetSlideDirection(this.startX, this.startY, pageX, pageY) == 4){
+        if(GetSlideDirection(this.startX, this.startY, pageX, pageY) >= 3){
             event.preventDefault();
             event.stopPropagation();
         }
@@ -153,23 +157,28 @@ class Carousel extends Component {
     }
 
     render() {
-        
         return (
                 <div 
-                    ref={(n) => this.carouselWarp = n}
+                    ref = {(n) => this.carouselWarp = n}
                     className={styles.wrap + " " + (this.props.className ? this.props.className : "")}
                     style={{...this.props.style}}
-                    onTouchStart={this.startTouch}
-                    onTouchMove={this.moveTouch}
-                    onTouchEnd={this.endTouch}
                 >
-                    {
-                        React.Children.map(this.props.children, (slide, i) => 
-                            <div key={i} className={styles.slide} width={this.state.pw +'px'}>
-                                {React.cloneElement(slide)}
-                            </div>
-                        )
-                    }
+                    <ul
+                        ref = {(n) => this.slideList = n}
+                        className={styles['slide-list']}
+                        onTouchStart={this.startTouch}
+                        onTouchMove={this.moveTouch}
+                        onTouchEnd={this.endTouch}
+                    >
+                        {
+                            React.Children.map(this.props.children, (slide, i) => 
+                                <li key={i} className={styles.slide}>
+                                    {React.cloneElement(slide)}
+                                </li>
+                            )
+                        }
+                    </ul>
+                    
                 </div>
         )
     }
