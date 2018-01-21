@@ -8,7 +8,7 @@ const initUserInfo = {
 
 const UserReducer = (state = initUserInfo, action) => {
     switch (action.type) {
-        case 'GET_USER_INFO':
+        case 'USER_INFO':
             return Object.assign({}, state, {screenSize: action.info})
         case 'USER_INCREMENT':
             return Object.assign({}, state, {countValue: state.countValue + action.num})
@@ -23,7 +23,7 @@ const UserReducer = (state = initUserInfo, action) => {
 /*-----------------------------------------------------------------*/
 /*User Action*/
 /*-----------------------------------------------------------------*/
-const changeUserInfo = (info) => ({type: 'GET_USER_INFO', info})
+const changeUserInfo = (info) => ({type: 'USER_INFO', info})
 const increaseCount = (num=1) => ({type: 'USER_INCREMENT', num})
 const clearCount = () => ({type: 'USER_CLEAR_COUNT'})
 
