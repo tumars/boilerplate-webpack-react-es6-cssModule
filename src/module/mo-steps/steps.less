@@ -1,0 +1,72 @@
+:global{
+    .tj-step {
+        position: relative;
+        height: 150px;
+        line-height: 1.5;
+        vertical-align: top;
+    }
+    .tj-step__head {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        color: #fff;
+        vertical-align: top;
+    }
+    .tj-step__line {
+        position: absolute;
+        top:30px;
+        bottom: 0;
+        left: 23px;
+        width: 1px;
+        height: 133px;
+        box-sizing: border-box;
+        border-color: inherit;
+        background-color: #ccc;
+    }
+    .is-success .tj-step__line{
+        top:46px;
+    }
+    .tj-step__line-inner {
+        display: block;
+        border-width: 1px;
+        border-style: solid;
+        border-color: inherit;
+        transition: all 150ms;
+        box-sizing: border-box;
+        width: 0;
+        height: 0;
+    }
+    .is-success .tj-step__line-inner  {
+        border-left: solid 1px  #7ED321;
+        height: 100%;
+    }
+    .tj-step__icon-none {
+        position: relative;
+        left: 13px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: solid 1px #ccc;
+        border-radius: 50%;
+        background: #fff;
+    }
+
+    .tj-step__main {
+        display: inline-block;
+        padding-left: 20px;
+        padding-right: 10px;
+        white-space: normal;
+        text-align: left;
+    }
+
+    .tj-step__title {
+        font-size: 34px;
+        color: #000;
+    }
+
+    .tj-step__description {
+        font-size: 28px;
+        color: #666666;
+    }
+}

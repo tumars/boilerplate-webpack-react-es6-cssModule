@@ -1,27 +1,24 @@
-import React, { Component } from 'react'
-
+import React from 'react'
 import styles from './button.less'
+var classNames = require('classnames');
 
-
-class Button extends Component {
-	constructor(props) {
-        super(props)
-    }
-
-    render() {
-		const { children, bg, onClick } = this.props
-		const style = {}
-		if(bg) {
-			style.background = bg
-		}
-		return (
-			<div className={styles.btn} style={style} onClick={onClick}>
-				{children}
-				<i className={styles.icon}></i>
-			</div>
-		)
+const Button = ({children, onClick, type, size, bg, className, style={}}) => {
+	if(bg) {
+		style.background = bg
 	}
+	const cln = classNames(styles.btn, {
+		[styles['btn-large']]: size === 'large',
+		[styles['btn-small']]: size === 'small',
+		[styles['btn-primary']]: type === 'primary',
+	}, className)
+	return (
+		<div className={cln} style={style} onClick={onClick}>
+			{children}
+		</div>
+	)
 }
+
+
 
 
 
