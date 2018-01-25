@@ -1,93 +1,72 @@
-.dyy {
-	position: fixed;
-	top: 0;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	background: rgba(225, 225, 225, 0.4)
+:global{
+    .tj-laballspin {
+        position: relative;
+        display: block;
+        width: 32px;
+        height: 32px;
+        font-size: 0;
+        color: #333;
+    
+        div {
+            position: absolute;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+            background-color: currentColor;
+            border: 0 solid currentColor;
+            :local {
+                animation: tj-laballspin-spin 1s infinite ease-in-out;
+            }
+            
+    
+            &:nth-child(1) {
+                top: 5%;
+                left: 50%;
+                animation-delay: -1.125s;
+            }
+            &:nth-child(2) {
+                top: 18.1801948466%;
+                left: 81.8198051534%;
+                animation-delay: -1.25s;
+            }
+            &:nth-child(3) {
+                top: 50%;
+                left: 95%;
+                animation-delay: -1.375s;
+            }
+            &:nth-child(4) {
+                top: 81.8198051534%;
+                left: 81.8198051534%;
+                animation-delay: -1.5s;
+            }
+            &:nth-child(5) {
+                top: 94.9999999966%;
+                left: 50.0000000005%;
+                animation-delay: -1.625s;
+            }
+            &:nth-child(6) {
+                top: 81.8198046966%;
+                left: 18.1801949248%;
+                animation-delay: -1.75s;
+            }
+            &:nth-child(7) {
+                top: 49.9999750815%;
+                left: 5.0000051215%;
+                animation-delay: -1.875s;
+            }
+            &:nth-child(8) {
+                top: 18.179464974%;
+                left: 18.1803700518%;
+                animation-delay: -2s;
+            }
+            
+        }
+    }
+    
 }
 
-.laballspin,
-.laballspin > div {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    box-sizing: border-box;
-}
-.laballspin {
-    display: block;
-    font-size: 0;
-    color: #333;
-}
-.laballspin.la-dark {
-    color: #333;
-}
-.laballspin > div {
-    display: inline-block;
-    float: none;
-    background-color: currentColor;
-    border: 0 solid currentColor;
-}
-.laballspin {
-    width: 32px;
-    height: 32px;
-}
-.laballspin > div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    margin-top: -4px;
-    margin-left: -4px;
-    border-radius: 100%;
-    animation: ball-spin 1s infinite ease-in-out;
-}
-.laballspin > div:nth-child(1) {
-    top: 5%;
-    left: 50%;
-    animation-delay: -1.125s;
-}
-.laballspin > div:nth-child(2) {
-    top: 18.1801948466%;
-    left: 81.8198051534%;
-    animation-delay: -1.25s;
-}
-.laballspin > div:nth-child(3) {
-    top: 50%;
-    left: 95%;
-    animation-delay: -1.375s;
-}
-.laballspin > div:nth-child(4) {
-    top: 81.8198051534%;
-    left: 81.8198051534%;
-    animation-delay: -1.5s;
-}
-.laballspin > div:nth-child(5) {
-    top: 94.9999999966%;
-    left: 50.0000000005%;
-    animation-delay: -1.625s;
-}
-.laballspin > div:nth-child(6) {
-    top: 81.8198046966%;
-    left: 18.1801949248%;
-    animation-delay: -1.75s;
-}
-.laballspin > div:nth-child(7) {
-    top: 49.9999750815%;
-    left: 5.0000051215%;
-    animation-delay: -1.875s;
-}
-.laballspin > div:nth-child(8) {
-    top: 18.179464974%;
-    left: 18.1803700518%;
-    animation-delay: -2s;
-}
-/*
- * Animation
- */
-
-@keyframes ball-spin {
+@keyframes tj-laballspin-spin {
     0%,
     100% {
         opacity: 1;

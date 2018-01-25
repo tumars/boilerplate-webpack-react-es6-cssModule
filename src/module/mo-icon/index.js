@@ -1,6 +1,6 @@
 import React from 'react'
 import SvgConfig from './svg-config'
-import styles from './icon.less'
+import './icon.less'
 var classNames = require('classnames');
 
 
@@ -11,9 +11,9 @@ const Icon = ({
     style={}, 
     className 
 }) => {
-    const cln = classNames(styles.icon, {
-		[styles['icon-large']]: size === 'large',
-		[styles['icon-small']]: size === 'small',
+    const cln = classNames('tj-icon', {
+		['tj-icon__large']: size === 'large',
+		['tj-icon__small']: size === 'small',
     }, className)
     style.fill = color
 

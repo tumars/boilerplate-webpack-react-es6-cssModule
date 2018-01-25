@@ -2,13 +2,13 @@
     @c1: #fba112;
     @c7: #000;
 
-    .tj-tabs-content {
+    .tj-tabs__content {
         position: relative;
         width: 100%;
         overflow: hidden;
     }
 
-    .tj-tabs-nav-wrap {
+    .tj-tabs__nav-wrap {
         display: block;
         position: relative;
         box-sizing: border-box;
@@ -19,7 +19,7 @@
         overflow: hidden;
     }
 
-    .tj-tabs-nav {
+    .tj-tabs__nav {
         display: inline-block;
         height: 60px;
         box-sizing: border-box;
@@ -33,11 +33,11 @@
         cursor: pointer;
     }
 
-    .tj-tabs-nav-active {
+    .tj-tabs__nav--active {
         color: @c1
     }
 
-    .tj-tabs-activebar {
+    .tj-tabs__activebar {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -49,7 +49,7 @@
         list-style: none;
     }
 
-    .tj-tabs-pane-wrap {
+    .tj-tabs__pane-wrap {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -57,22 +57,22 @@
         margin-top: 30px;
         will-change: transform;
     }
-    .tj-tabs-pane-wrap__ani {
+    .tj-tabs__pane-wrap--ani {
         transition: transform .2s cubic-bezier(.645,.045,.355,1);
     }
 
 
-    .tj-tabs-pane {
+    .tj-tabs__pane {
         width: 100%;
         flex-shrink: 0;
         transition: opacity .45s;
         opacity: 1;
     }
 
-    .tj-tabs-pane-inactive {
-        opacity: 0;
-        height: 0;
-        padding: 0;
+    .tj-tabs__pane--inactive {
+        // opacity: 0;
+        // height: 0;
+        // padding: 0;
     }
 }
 

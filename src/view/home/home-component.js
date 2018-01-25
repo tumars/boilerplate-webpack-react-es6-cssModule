@@ -17,6 +17,7 @@ class HomeComponent extends Component {
 		const { 
 			openDialog, 
 			goListPage,
+			goMiaoPage,
 			countValue
 		} = this.props
 		
@@ -25,8 +26,9 @@ class HomeComponent extends Component {
 				<UserInfo />
 				<p styleName="hello">你好，我是个简单的示例 domo</p>
 				<p>{countValue}</p>
-				<Button onClick={goListPage}>去列表页</Button>
-				<Button onClick={openDialog}>打开一个弹框</Button>
+				<Button type="primary" onClick={goListPage}>去列表页</Button>
+				<Button type="primary" onClick={openDialog}>打开一个弹框</Button>
+				<Button type="primary" onClick={goMiaoPage}>如何养猫</Button>
 			</div>
 		)
 	}

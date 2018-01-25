@@ -1,23 +1,22 @@
 import React from 'react';
-import style from './spin.less';
+import './spin.less';
+
+var classNames = require('classnames');
 
 
-const spin = () => (
-    <div>
-        <div className={style.dyy}></div>
-        <div className={style.laballspin}>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-    </div>
+const Spin = ({visible, className, style}) => (
+    <div className={classNames("tj-laballspin", className)} style={{display: visible ? 'inline-block': 'none', ...style}}>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 )
 
-export default spin
+export default Spin
 
 

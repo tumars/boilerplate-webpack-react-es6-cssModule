@@ -9,6 +9,7 @@ import store from '../store'
 /*引入页面组件*/
 import Home from '../view/home'
 import List from '../view/list'
+import Miao from '../view/miao'
 
 /*引入路由切换样式*/
 import style from './router.less'
@@ -29,6 +30,9 @@ const routes_config = [
 	}, {
 		path: '/list',
 		component: List
+	}, {
+		path: '/miao',
+		component: Miao
 	}
 ]
 

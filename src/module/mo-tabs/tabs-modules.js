@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './tabs.less';
 
+var classNames = require('classnames');
 
 // 标签页内容
-const Panel = ({key, children, isActive }) => (
-    <div key={key} className={"tj-tabs-pane" + (isActive ? ' tj-tabs-pane-active' : ' tj-tabs-pane-active')}>
+const Panel = ({children, isActive }) => (
+    <div 
+        className={classNames('tj-tabs__pane', {
+            'tj-tabs__pane--active': isActive,
+            'tj-tabs__pane--inactive': !isActive
+        })}
+    >
         {children}
     </div>
 )
@@ -22,12 +28,16 @@ Panel.propTypes = {
 const Nav = ({titles, activeIndex, onChange}) => {
     const len = titles.length
     return (
-        <div className="tj-tabs-nav-wrap">
+        <div className="tj-tabs__nav-wrap">
             {
                 titles.map((title, i) => 
                     <div 
                         key={title} 
-                        className={`tj-tabs-nav ${activeIndex == i ? 'tj-tabs-nav-active' : ''}`} 
+                        className={
+                            classNames('tj-tabs__nav', {
+                                'tj-tabs__nav--active': activeIndex == i
+                            })
+                        } 
                         style={{width: 100/len + "%"}} 
                         onClick={onChange.bind(null, i)}
                     >
@@ -35,7 +45,7 @@ const Nav = ({titles, activeIndex, onChange}) => {
                     </div>
                 )
             }
-            <div className="tj-tabs-activebar" style={{ width: 100/len + "%",marginLeft:activeIndex*100/len + "%"}}></div>
+            <div className="tj-tabs__activebar" style={{ width: 100/len + "%",marginLeft:activeIndex*100/len + "%"}}></div>
         </div>
     )
 }

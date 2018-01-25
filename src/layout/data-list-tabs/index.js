@@ -3,24 +3,28 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import _ut from 'my-util'
-import { addList, clearList } from 'reducers/data-list'
+import { fetchAddList, clearList } from 'reducers/data-list'
 import ListComponent from './component.js'
 import Dialog from 'mo-dialog'
 
 const mapDispatchToProps = (dispatch) => {
+	const ErrorTip = () => <small>网络出错, 请执行 <b>yarn mock</b> 启动接口</small>
+	const getData = async (type, page) => {
+		try {
+			dispatch(fetchAddList(type, page))
+		} catch(e) {
+			Dialog.alert(<ErrorTip />, {closeOnClickModal:true})
+		}
+	}
 	return {
+		getData,
 		initData() {
 			dispatch(clearList())
-			this.getData('movie', 1)
+			getData('movie', 1)
 		},
-		async getData(type, page) {
-			try {
-				const list = await _ut.fetch(`http://localhost:3003/${type}${page}`)
-				dispatch(addList(type, list))
-			} catch(e) {
-				console.log(e)
-				Dialog.alert(<small>网络出错, 请执行 <b>yarn mock</b> 启动接口</small>, {closeOnClickModal:true})
-			}
+		tabChange(index, bookListInfo) {
+			const  { list } = bookListInfo;
+			index == 1 && !list.length && getData('book', 1)
 		}
 	}	
 }

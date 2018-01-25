@@ -43,14 +43,14 @@ class Tabs extends Component {
         const panels = this.props.children
 
         return (
-            <div ref={(n) => this.tabContent = n} className="tj-tabs-content">
+            <div ref={(n) => this.tabContent = n} className="tj-tabs__content">
                 <Nav 
                     titles={React.Children.map(panels, panel=>panel.props.title)}
                     activeIndex={activeIndex}
                     onChange={this.handleChange}
                 />
                 <Carousel 
-                    className="tj-tabs-pane-wrap"
+                    className="tj-tabs__pane-wrap"
                     activeIndex={activeIndex}
                     onChange={(perv, next)=>this.handleChange(next)}
                 >
