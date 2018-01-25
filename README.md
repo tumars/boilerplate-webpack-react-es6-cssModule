@@ -18,6 +18,7 @@
 ![https://github.com/babel/babel](https://img.shields.io/badge/babel--loader-v7.0.0-orange.svg)
 ![https://github.com/postcss/postcss](https://img.shields.io/badge/postcss--loader-v2.0.9-orange.svg)
 
+
 ## 功能
 #### 主要功能
 - [x] Hot Module Replacement 热加载
@@ -29,6 +30,12 @@
 - [x] 文件压缩、添加 MD5
 - [x] 引入 babel-polyfill, whatwg-fetch， 使用 ES6, Fetch
 - [x] 使用 Redux DevTools ([安装浏览器插件](https://github.com/zalmoxisus/redux-devtools-extension))
+
+#### 示例动图：
+<img src="./img/demo.gif"  alt="demo" width="375">
+<!-- ![demo](./img/demo.gif) -->
+
+#### <a href="#start">开始使用</a>
 
 
 ### 组件
@@ -62,12 +69,10 @@
 	- <a href="#userpd">使用 react-perf-devtool 调试性能</a>
 
 
-#### 示例动图：
-<img src="./img/demo.gif"  alt="demo" width="375">
-<!-- ![demo](./img/demo.gif) -->
 
 
-## 使用
+
+## <span id="start">使用</span>
 本项目使用`yarn`作为包管理，也可替换为`npm`。两者的差异请参阅[从 npm 客户端迁移](https://yarnpkg.com/zh-Hans/docs/migrating-from-npm)。无论使用哪个都建议将安装源替换为[淘宝镜像](https://npm.taobao.org/)。 
 
 ### 安装
