@@ -172,7 +172,16 @@ React Diff 算法中 React 会借助元素的 key 值来判断该元素是新近
 #### 不要在 componentWillAmount 中调用 setState
 在 componentWillAmount 没有意义，所有的 state 初始化应当在 this.state 中定义，而第一次 render 后改变 state 应当在 componentDidAmount 中执行。
 
+#### 注意动画渲染优化，使用 chrome 调试性能
+页面的图像渲染经过如下五个步骤
 
+- script （js 计算）
+- style （样式计算）
+- layout （布局）
+- paint （绘制）
+- composite （合成） 
+
+具体的讲解与优化请查看 chrome 开发者文档的说明： https://developers.google.com/web/fundamentals/performance/rendering/?hl=zh-cn
 
 <!-- ### <span id="userpd">使用 react-perf-devtool 调试性能</span> -->
 
