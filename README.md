@@ -92,14 +92,13 @@ yarn start
 ![iterm1](./img/iterm1.png)
 
 ### mock 接口数据
-本项目的接口数据通过 `json-server` 配置，需全局安装并启动：
-（打开新命令行窗口）
+
+打开新命令行窗口，执行：
 ```
-yarn global add json-server 或 npm i -g json-server 
 yarn run mock
 ```
 
-接口将会在本地 3003 端口启动。
+接口将会在本地 3003 端口启动。本项目的接口数据通过 node http 服务建立，配置文件在 /mock 文件夹内。
 
 ![iterm2](./img/iterm2.png)
 
@@ -124,7 +123,6 @@ cd ./dist
 anywhere
 ```
 页面会自动打开
-
 
 
 ##  <span id="structure">目录文件结构 </span>

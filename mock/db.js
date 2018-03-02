@@ -1,4 +1,5 @@
-{
+
+const list = {
 	"movie1": {
 		"total": 2,
 		"now": 1,
@@ -44,4 +45,10 @@
 		]
 	}
 	
+}
+
+
+
+module.exports = {
+    list
 }

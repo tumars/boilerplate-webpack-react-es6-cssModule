@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './spin.less';
 
 var classNames = require('classnames');
@@ -16,6 +17,12 @@ const Spin = ({visible, className, style}) => (
 		<div></div>
 	</div>
 )
+
+Spin.propTypes = {
+	visible: PropTypes.bool,
+	className:  PropTypes.bool,
+	style: PropTypes.object
+};
 
 export default Spin
 

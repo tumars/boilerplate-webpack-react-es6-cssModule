@@ -1,14 +1,44 @@
-:global{
-    .tj-icon {
-        display: inline-block;
-        width: 46px;
-        height: 46px;
-    }
 
-    .tj-icon__large {
-        display: inline-block;
-        width: 130px;
-        height: 130px;
-    }
+.icon {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    stroke: #f3f3f3;
+}
 
+.icon-large {
+    width: 130px;
+    height: 130px;
+}
+
+.icon-medium {
+    width: 80px;
+    height: 80px;
+    stroke-dasharray: 0 1000px;
+}
+
+.ani {
+    stroke-width: 50px;
+    fill-opacity: 0;
+    stroke-dashoffset: 7% 7%;
+    stroke-dasharray: 0 35%;
+    animation: fillIn 1s 1 linear;
+    animation-fill-mode: forwards;
+}
+
+
+
+@keyframes fillIn {
+    0%{
+        fill-opacity: 0;
+        stroke-dashoffset: 7%, 7%;
+    }
+    70%{
+        fill-opacity: 0;
+        stroke-dashoffset: 100%, 7%;
+    }
+    100% {
+        fill-opacity: 1;
+        stroke-dasharray: 100%, 0;
+    }
 }

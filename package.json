@@ -5,7 +5,7 @@
   "private": false,
   "license": "ISC",
   "scripts": {
-    "mock": "json-server mock/db.json --port 3003",
+    "mock": "node mock/api.js",
     "start": "node server.js",
     "lint": "eslint src",
     "build-mac": "rm -rf dist && webpack --config ./webpack.prod.config.js --progress --profile --colors",

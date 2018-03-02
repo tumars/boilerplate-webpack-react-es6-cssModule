@@ -26,7 +26,6 @@ export const SpreadTransition = (props) => (
 	/>
 )
 
-
 export const PopTransition = (props) => (
     <CSSTransition
 		{...props}

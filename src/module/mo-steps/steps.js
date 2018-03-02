@@ -35,7 +35,9 @@ class Steps extends Component {
 
 
 Steps.propTypes = {
-	current: PropTypes.number
+	current: PropTypes.number,
+	className:  PropTypes.bool,
+	style: PropTypes.object
 };
 
 export default Steps

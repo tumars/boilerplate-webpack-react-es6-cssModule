@@ -33,7 +33,8 @@ const TjTable = ({columns, dataSource, cLassName}) => (
 
 TjTable.propTypes = {
     dataSource : PropTypes.arrayOf(PropTypes.object),
-    columns : PropTypes.arrayOf(PropTypes.object)
+    columns : PropTypes.arrayOf(PropTypes.object),
+    cLassName: PropTypes.string
 }
 
 TjTable.defaultProps = {

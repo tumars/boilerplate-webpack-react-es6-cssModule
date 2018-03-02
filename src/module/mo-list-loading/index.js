@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './listloading.less';
 
 const ListLoading = ({className}) => (
@@ -15,6 +16,10 @@ const ListLoading = ({className}) => (
 		</div>
 	</div>
 )
+
+ListLoading.propTypes = {
+	className:  PropTypes.bool
+};
 
 export default ListLoading
 

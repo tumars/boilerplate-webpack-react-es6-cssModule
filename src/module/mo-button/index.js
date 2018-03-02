@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './button.less'
 var classNames = require('classnames');
 
@@ -17,6 +18,15 @@ const Button = ({children, onClick, type, size, bg, className, style={}}) => {
 		</div>
 	)
 }
+
+Button.propTypes = {
+	onClick: PropTypes.func,
+	type: PropTypes.string,
+	size: PropTypes.string,
+	bg: PropTypes.string,
+	className:  PropTypes.bool,
+	style: PropTypes.object
+};
 
 
 export default Button
