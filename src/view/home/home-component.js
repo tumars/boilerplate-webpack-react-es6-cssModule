@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 import Button from 'mo-button'
-import UserInfo from 'layout/user-info'
+import UserCard from 'layout/user-card'
 import style from './home.less'
 
 @CSSModules(style, {handleNotFoundStyleName: 'ignore'})
@@ -23,7 +23,7 @@ class HomeComponent extends Component {
 		
 		return (
 			<div styleName="wrap">
-				<UserInfo />
+				<UserCard />
 				<p styleName="hello">你好，我是个简单的示例 domo</p>
 				<p>{countValue}</p>
 				<Button type="primary" onClick={goListPage}>去列表页</Button>

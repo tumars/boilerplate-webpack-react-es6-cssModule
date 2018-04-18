@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 import Button from 'mo-button'
 import DataListTabs from 'layout/data-list-tabs'
-import UserInfo from 'layout/user-info'
+import UserCard from 'layout/user-card'
 import style from './list.less'
 
 
@@ -18,7 +18,7 @@ class ListComponent extends Component {
 			<div styleName="wrap">
 				<DataListTabs />
 				<Button styleName="btn" onClick={()=>goBack()}>返回首页</Button>
-				<UserInfo />
+				<UserCard />
 			</div>
 		)
 	}

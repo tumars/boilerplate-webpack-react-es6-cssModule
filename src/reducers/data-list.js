@@ -7,15 +7,11 @@ import _ut from 'my-util'
 const initListInfo = {
     movieListInfo: {
         isFetching: false,
-        list: [],
-        total: 1,
-        now: 0
+        list: []
     },
     bookListInfo: {
         isFetching: false,
-        list: [],
-        total: 1,
-        now: 0
+        list: []
     }
 }
 
@@ -37,9 +33,8 @@ const ListReducer = (state = initListInfo, action) => {
                     case 'success':
                         {
                             newListInfo = {
-                                total: list.total,
-                                now: list.now,
-                                list: oldListInfo.list.concat(list.data)
+                                list: oldListInfo.list.concat(list.data),
+                                isFetching: false
                             }
                         }
                     break;
@@ -89,10 +84,10 @@ const clearList = () => ({
 /*-----------------------------------------------------------------*/
 /*Async List Action Depend on Redux-Thunk*/
 /*-----------------------------------------------------------------*/
-const fetchAddList = (type, page) => async dispatch => {
+const fetchAddList = (type) => async dispatch => {
     dispatch(fetchStart())
     try {
-        const list = await _ut.fetch(`http://localhost:3003/${type}${page}`)
+        const list = await _ut.fetch(`http://localhost:3003/${type}`)
         dispatch(addList(type, list))
     } catch(e) {
         dispatch(fetchError())

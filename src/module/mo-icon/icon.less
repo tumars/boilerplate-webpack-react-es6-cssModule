@@ -1,34 +1,36 @@
 
-.icon {
-    display: inline-block;
-    width: 46px;
-    height: 46px;
-    stroke: #f3f3f3;
+:global{
+    .tj-icon {
+        display: inline-block;
+        width: 46px;
+        height: 46px;
+        stroke: #f3f3f3;
+    }
+
+    .tj-icon_large {
+        width: 130px;
+        height: 130px;
+    }
+
+    .tj-icon_medium {
+        width: 80px;
+        height: 80px;
+        stroke-dasharray: 0 1000px;
+    }
+
+    .tj-icon_ani {
+        stroke-width: 50px;
+        fill-opacity: 0;
+        stroke-dashoffset: 7% 7%;
+        stroke-dasharray: 0 35%;
+        :local {
+            animation: tj-icon__ani_fillIn 1s 1 linear;
+            animation-fill-mode: forwards;
+        }
+    }
 }
 
-.icon-large {
-    width: 130px;
-    height: 130px;
-}
-
-.icon-medium {
-    width: 80px;
-    height: 80px;
-    stroke-dasharray: 0 1000px;
-}
-
-.ani {
-    stroke-width: 50px;
-    fill-opacity: 0;
-    stroke-dashoffset: 7% 7%;
-    stroke-dasharray: 0 35%;
-    animation: fillIn 1s 1 linear;
-    animation-fill-mode: forwards;
-}
-
-
-
-@keyframes fillIn {
+@keyframes tj-icon__ani_fillIn {
     0%{
         fill-opacity: 0;
         stroke-dashoffset: 7%, 7%;

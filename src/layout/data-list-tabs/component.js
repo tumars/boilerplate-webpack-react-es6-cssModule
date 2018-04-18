@@ -31,13 +31,13 @@ class ListTabs extends Component {
 					<Tabs.Panel title="电影">
 						<Table 
 							data={movieListInfo} 
-							onMore={(index)=>getData('movie', index)}
+							onLoadMore={()=>getData('movie')}
 						/>
 					</Tabs.Panel>
 					<Tabs.Panel title="图书">
 						<Table 
 							data={bookListInfo} 
-							onMore={(index)=>getData('book', index)}
+							onLoadMore={()=>getData('book')}
 						/>
 					</Tabs.Panel>
 				</Tabs>

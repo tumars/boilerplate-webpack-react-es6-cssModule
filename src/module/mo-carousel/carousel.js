@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { GetSlideDirection, setCss3Style } from './method'
-import styles from './carousel.less'
+// import styles from './carousel.less'
+
+var classNames = require('classnames');
 
 
 class Carousel extends Component {
@@ -153,26 +155,27 @@ class Carousel extends Component {
         this.toggleTransition()
         this.moveCarousel(this.totalX)
 
-        onChange &&  onChange(oldActiveIndex, newActiveIndex)    
+        onChange && onChange(oldActiveIndex, newActiveIndex)    
     }
 
     render() {
+        const { className } = this.props;
         return (
                 <div 
                     ref = {(n) => this.carouselWarp = n}
-                    className={styles.wrap + " " + (this.props.className ? this.props.className : "")}
+                    className={classNames('tj-carousel__wrap', className)}
                     style={{...this.props.style}}
                 >
                     <ul
                         ref = {(n) => this.slideList = n}
-                        className={styles['slide-list']}
+                        className="tj-carousel__slide-list"
                         onTouchStart={this.startTouch}
                         onTouchMove={this.moveTouch}
                         onTouchEnd={this.endTouch}
                     >
                         {
                             React.Children.map(this.props.children, (slide, i) => 
-                                <li key={i} className={styles.slide}>
+                                <li key={i} className="tj-carousel__slide">
                                     {React.cloneElement(slide)}
                                 </li>
                             )

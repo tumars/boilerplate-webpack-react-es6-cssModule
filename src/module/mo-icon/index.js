@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SvgConfig from './svg-config'
-import styles from './icon.less'
 var classNames = require('classnames');
 
 
@@ -14,17 +13,17 @@ const Icon = ({
     className,
     ani=false
 }) => {
-    const cln = classNames(styles.icon, {
-        [styles['icon-large']]: size === 'large',
-        [styles['icon-medium']]: size === 'medium',
-		[styles['icon-small']]: size === 'small',
+    const cln = classNames('tj-icon', {
+        ['tj-icon_large']: size === 'large',
+        ['tj-icon_medium']: size === 'medium',
+		['tj-icon_small']: size === 'small',
     }, className)
     style.fill = color;
     style.stroke = stroke;
 
     return (
         <svg
-            className={classNames(cln, {[styles['ani']]: ani})} style={style}
+            className={classNames(cln, {['tj-icon_ani']: ani})} style={style}
             width="200" height="200"
             viewBox="0 0 1024 1024"
         >

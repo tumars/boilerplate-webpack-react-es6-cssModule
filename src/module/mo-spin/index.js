@@ -5,7 +5,7 @@ import './spin.less';
 var classNames = require('classnames');
 
 
-const Spin = ({visible, className, style}) => (
+const Spin = ({visible=true, className, style}) => (
     <div className={classNames("tj-laballspin", className)} style={{display: visible ? 'inline-block': 'none', ...style}}>
 		<div></div>
 		<div></div>

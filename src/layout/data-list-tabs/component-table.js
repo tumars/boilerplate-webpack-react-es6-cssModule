@@ -1,31 +1,32 @@
 import React from 'react'
 import CSSModules from 'react-css-modules'
 import SimpleList from 'co-simple-list'
+import InfiniteScroll from 'mo-infinite-scroll'
 import ListLoading from 'mo-list-loading'
-import Button from 'mo-button'
+// import Button from 'mo-button'
 import Spin from 'mo-spin'
 import style from './list-tabs.less'
 
 
-let Table = ({data:{ list, total, now, isFetching}, onMore}) => {
+let Table = ({data:{ isFetching, list }, onLoadMore}) => {
+	console.log(isFetching)
 	return (
-		<div styleName="panel">
+		<InfiniteScroll 
+			styleName="panel" 
+			onLoadMore={()=>onLoadMore()} 
+			height={window.innerWidth*0.7 + 'px'}
+			loader={
+				<div style={{textAlign:'center'}}>
+					<Spin styleName="spin" visible={isFetching}/><span styleName="pagina">加载更多</span>
+				</div>
+			}
+		>
 			{
 				Array.isArray(list) && list.length > 0
-					?	<div>
-							<SimpleList data={list} />
-							{
-								now < total &&
-								<Button type="primary" onClick={()=>onMore(now + 1)}>
-									<Spin styleName="spin" visible={isFetching}/>
-									查看更多
-									<span styleName="pagina">{now}/{total} 页</span>
-								</Button>
-							}
-						</div>
+					?	<SimpleList data={list} />
 					:	<ListLoading />
 			}
-		</div>
+		</InfiniteScroll>
 	)
 }
 

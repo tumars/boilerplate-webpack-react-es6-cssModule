@@ -20,11 +20,11 @@ const mapDispatchToProps = (dispatch) => {
 		getData,
 		initData() {
 			dispatch(clearList())
-			getData('movie', 1)
+			getData('movie')
 		},
 		tabChange(index, bookListInfo) {
 			const  { list } = bookListInfo;
-			index == 1 && !list.length && getData('book', 1)
+			index == 1 && !list.length && getData('book')
 		}
 	}	
 }

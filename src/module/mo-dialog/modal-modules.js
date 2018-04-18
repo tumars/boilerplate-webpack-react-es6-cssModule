@@ -3,6 +3,8 @@ import { TransitionGroup } from 'react-transition-group'
 import { FadeTransition, PopTransition } from '../mo-transtion'
 import style from './modal.less';
 
+var classNames = require('classnames');
+
 // 控制显示
 const View = ({ isshow, className, style, children, onClick}) => {
     return (
@@ -42,14 +44,12 @@ const Mask = ({visible, onClick}) => (
 
 
 // 内容主体
-const Content = ({visible, msg, children, showCloseIcon, onCloseIcon}) => (
+const Content = ({className, visible, msg, children, showCloseIcon, onCloseIcon}) => (
     <TransitionGroup>
         <PopTransition key={visible}>
-            <View isshow={visible} className="tj-dialog__wrapper">        
-                <div className="tj-dialog__default">
-                    {children}
-                    {msg}
-                </div>
+            <View isshow={visible} className={classNames("tj-dialog__content", className)}>        
+                {children}
+                {msg}
                 <CloseIcon visible={showCloseIcon} onClick={onCloseIcon}/>
             </View>
         </PopTransition>

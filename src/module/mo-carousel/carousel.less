@@ -1,51 +1,53 @@
-.wrap {
-    position: relative;
-    width: 100%;
-}
-.slide-list {
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    touch-action: pan-y pan-x;
-    will-change: transfrom;
-    transition-property: transform;
-    box-sizing: content-box;
-}
+:global{
+    .tj-carousel__wrap {
+        position: relative;
+        width: 100%;
+    }
+    .tj-carousel__slide-list {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        touch-action: pan-y pan-x;
+        will-change: transfrom;
+        transition-property: transform;
+        box-sizing: content-box;
+    }
 
-.slide {
-    display: inline-block;
-    flex: 0 1 auto;
-    position: relative;
-}
+    .tj-carousel__slide {
+        display: inline-block;
+        flex: 0 1 auto;
+        position: relative;
+    }
 
-.pagination-wrap {
-    position: relative;
-    overflow: hidden;
-}
-.pagination {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    height: 25px;
-    box-sizing: border-box;
-    padding: 0;
-    line-height: 1;
-    text-align: center;
-    overflow: hidden;
-    // pointer-events: none
-}
+    .tj-carousel__pagination-wrap {
+        position: relative;
+        overflow: hidden;
+    }
+    .tj-carousel__pagination-content {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        height: 25px;
+        box-sizing: border-box;
+        padding: 0;
+        line-height: 1;
+        text-align: center;
+        overflow: hidden;
+        // pointer-events: none
+    }
 
-.bullet {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0 10px;
-    padding: 0;
-    background: #d4a143;
-    border-radius: 50%;
-}
+    .tj-carousel__bullet {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        padding: 0;
+        background: #d4a143;
+        border-radius: 50%;
+    }
 
-.bullet-active {
-    .bullet;
-    background: #a32229;
+    .tj-carousel__bullet_active {
+        .bullet;
+        background: #a32229;
+    }
 }

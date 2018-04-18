@@ -3,7 +3,7 @@
   "version": "3.0",
   "description": "",
   "private": false,
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "mock": "node mock/api.js",
     "start": "node server.js",

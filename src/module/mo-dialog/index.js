@@ -4,7 +4,7 @@ import Modal from './modal'
 
 function alert(msg, props) {
     props = {
-        msg,
+        msg: <div style={{padding:'1.5em 0'}}>{msg}</div>,
         visible: true,
         ...props
     }
