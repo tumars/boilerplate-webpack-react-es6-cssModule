@@ -9,7 +9,6 @@ import style from './list-tabs.less'
 
 
 let Table = ({data:{ isFetching, list }, onLoadMore}) => {
-	console.log(isFetching)
 	return (
 		<InfiniteScroll 
 			styleName="panel" 

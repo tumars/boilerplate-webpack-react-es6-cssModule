@@ -17,7 +17,7 @@ class InfiniteScroll extends Component {
         this.myscroll.addEventListener("scroll", () => {
             const { scrollTop , clientHeight, scrollHeight } =  this.myscroll;
             const isCatchBottom = scrollTop + clientHeight >=  scrollHeight;
-
+            console.log(isCatchBottom)
             if (isCatchBottom) {
                 handleLoadStart();
                 onLoadMore()

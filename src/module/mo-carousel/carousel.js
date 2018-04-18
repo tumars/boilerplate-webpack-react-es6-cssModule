@@ -98,9 +98,8 @@ class Carousel extends Component {
         const { onMove } = this.props
         const { pageX, pageY } = event.targetTouches[0]
 
-        if(GetSlideDirection(this.startX, this.startY, pageX, pageY) >= 3){
+        if(GetSlideDirection(this.startX, this.startY, pageX, pageY) !== 0){
             event.preventDefault();
-            event.stopPropagation();
         }
 
 

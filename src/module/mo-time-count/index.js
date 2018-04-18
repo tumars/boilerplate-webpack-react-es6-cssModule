@@ -76,7 +76,6 @@ class TimeCount extends Component {
                 startDate =  Date.parse(startDate);
             }
             
-            console.log(endDate, startDate)
             return (endDate - startDate)
         }
     }
