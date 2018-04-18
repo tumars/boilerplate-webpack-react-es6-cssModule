@@ -2,9 +2,9 @@
 
 > webpack 的具体使用及优化可参考我的博文 [webpack 使用总结](http://www.ferecord.com/webpack-summary.html) 。
 
-> <del>组件的使用开发可参考 [ActiUI](https://tumars.github.io/ActiUI/) (自己写的 react component 组件库，该库目前用的仍是 webpack v1 及 react v13，参考就好，以后会更新)。</del>
+<!-- > <del>组件的使用开发可参考 [ActiUI](https://tumars.github.io/ActiUI/) (自己写的 react component 组件库，该库目前用的仍是 webpack v1 及 react v13，参考就好，以后会更新)。</del>
 
-> ActiUI 组件太久没更新，还是请直接参考本项目中 module 文件夹内的组件吧。此外推荐饿了么的 [element-react](https://github.com/eleme/element-react)，以及蚂蚁金服的 [Ant Design of React](https://ant.design/docs/react/introduce-cn)。
+> ActiUI 组件太久没更新，还是请直接参考本项目中 module 文件夹内的组件吧。此外推荐饿了么的 [element-react](https://github.com/eleme/element-react)，以及蚂蚁金服的 [Ant Design of React](https://ant.design/docs/react/introduce-cn)。 -->
 
 
 ## 主要依赖及工具
@@ -35,7 +35,7 @@
 <img src="./img/demo.gif"  alt="demo" width="375">
 <!-- ![demo](./img/demo.gif) -->
 
-#### <a href="#start">开始使用</a>
+<!-- #### <a href="#start">开始使用</a> -->
 
 
 ### 组件
@@ -53,7 +53,7 @@
 
 这些组件主要展示思路与方法，功能较基础，仅供参考。实际开发生产时请根据业务需求二次开发。
 
-#### 补充说明
+<!-- #### 补充说明
 - <a href="#structure">目录文件结构说明</a>
 - 其他技术选择
 	- <a href="#VWVH">REM 与 VW、VH</a>
@@ -67,12 +67,12 @@
 	- <a href="#nocwa">不要在 componentWillAmount 中调用 setState</a>
 	- <a href="#layout">注意动画渲染优化，使用 chrome 调试性能</a>
 	- <a href="#userpd">使用 react-perf-devtool 调试性能</a>
+ -->
 
 
 
 
-
-## <span id="start">使用</span>
+## <span id="start">开始使用</span>
 本项目使用`yarn`作为包管理，也可替换为`npm`。两者的差异请参阅[从 npm 客户端迁移](https://yarnpkg.com/zh-Hans/docs/migrating-from-npm)。无论使用哪个都建议将安装源替换为[淘宝镜像](https://npm.taobao.org/)。 
 
 ### 安装
@@ -122,7 +122,7 @@ yarn global add anywhere 或 npm i -g anywhere
 cd ./dist
 anywhere
 ```
-页面会自动打开
+页面会自动打开。
 
 
 ##  <span id="structure">目录文件结构 </span>
