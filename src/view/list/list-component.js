@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
 import Button from 'mo-button'
-import DataListTabs from 'layout/data-list-tabs'
+import ListTabs from 'layout/list-tabs'
 import UserCard from 'layout/user-card'
 import style from './list.less'
 
@@ -16,7 +16,7 @@ class ListComponent extends Component {
 		const { goBack } = this.props
 		return (
 			<div styleName="wrap">
-				<DataListTabs />
+				<ListTabs />
 				<Button styleName="btn" onClick={()=>goBack()}>返回首页</Button>
 				<UserCard />
 			</div>

@@ -13,13 +13,15 @@ class Segmented extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
 
+        const { tintColor, tintBg } = props
+
         this.defaultStyle = {
-            color: props.tintColor,
-            background: props.tintBg
+            color: tintColor,
+            background: tintBg
         }
         this.activeStyle = {
-            color: props.tintBg,
-            background:props.tintColor
+            color: tintBg,
+            background:tintColor
         }
     }
     
@@ -45,11 +47,15 @@ class Segmented extends Component {
 
     render() {
         const { activeIndex } = this.state;
-        const { values, tintBg } = this.props;
+        const { values, tintBg, lineColor=tintBg, style, className } = this.props;
         const len = values.length;
 
         return (
-            <div ref={(n) => this.tabContent = n} className="tj-segmented__content" style={{borderColor: tintBg}}>
+            <div 
+                ref={(n) => this.tabContent = n} 
+                className={classNames("tj-segmented__content", className)} 
+                style={{...style, borderColor: tintBg}}
+            >
                 {
                     values.map((title, i) => 
                         <div 
@@ -61,7 +67,7 @@ class Segmented extends Component {
                             } 
                             style={
                                 Object.assign(
-                                    {width: 100/len + "%", borderColor: tintBg}, 
+                                    {width: 100/len + "%", borderColor: lineColor}, 
                                     (activeIndex == i ? this.defaultStyle : this.activeStyle))
                             } 
                             onClick={this.handleChange.bind(this, i)}

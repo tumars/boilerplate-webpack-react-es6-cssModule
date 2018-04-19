@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SvgConfig from './svg-config'
+import './icon.less'
 var classNames = require('classnames');
 
 

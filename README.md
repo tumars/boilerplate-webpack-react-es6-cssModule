@@ -48,6 +48,8 @@
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-list-loading">列表载入 List-Loading</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-icon">图标 Icon</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-steps">步骤条 Steps</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-segmented">分段器 Segmented</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-time-count">倒计时 Time-Count</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-result-card">结果页 Result-Card</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-spin">菊花图 Spin</a>
 

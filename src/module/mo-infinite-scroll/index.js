@@ -10,17 +10,16 @@ class InfiniteScroll extends Component {
     }
     componentDidMount() {
         const { onLoadMore } = this.props;
-        const handleLoadError = () =>{ alert('error') }
-        const handleLoadStart = () => {this.setState({isLoading: true})}
-        const handleLoadFinish = () => {this.setState({isLoading: false})}
+        const handleLoadError = () =>{ this.setState({isLoading: false}) }
+        const handleLoadStart = () => { this.setState({isLoading: true}) }
+        const handleLoadFinish = () => { this.setState({isLoading: false})}
         
         this.myscroll.addEventListener("scroll", () => {
             const { scrollTop , clientHeight, scrollHeight } =  this.myscroll;
-            const isCatchBottom = scrollTop + clientHeight >=  scrollHeight;
-            console.log(isCatchBottom)
-            if (isCatchBottom) {
+            const isCatchBottom = scrollTop + clientHeight >=  scrollHeight - 10;
+            if (isCatchBottom && !this.state.isLoading) {
                 handleLoadStart();
-                onLoadMore()
+                Promise.resolve(onLoadMore())
                     .catch(handleLoadError)
                     .finally(handleLoadFinish);
             }
@@ -37,7 +36,7 @@ class InfiniteScroll extends Component {
                 style={{ height, overflow: "auto", ...style }}
             >
                 {this.props.children}
-                {loader || isLoading && <p>loading...</p>}
+                {loader || ( isLoading && <p>loading...</p> )}
             </ul>
         )
     }

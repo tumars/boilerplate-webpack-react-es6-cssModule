@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './button.less'
 var classNames = require('classnames');
 
-const Button = ({children, onClick, type, size, bg, className, style={}}) => {
+const Button = ({children, onClick, type="primary", size, bg, className, style}) => {
 	if(bg) {
 		style.background = bg
 	}
@@ -13,9 +13,9 @@ const Button = ({children, onClick, type, size, bg, className, style={}}) => {
 		["tj-btn__primary"]: type === 'primary',
 	}, className)
 	return (
-		<div className={cln} style={style} onClick={onClick}>
+		<span className={cln} style={style} onClick={onClick}>
 			{children}
-		</div>
+		</span>
 	)
 }
 

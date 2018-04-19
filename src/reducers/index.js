@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import { UserReducer } from './user-info'
-import { ListReducer } from './data-list'
+import { UserReducer } from './user-info-reducer'
+import { DataListReducer } from './data-list-reducer'
 
 export default combineReducers({
     UserReducer,
-    ListReducer
+    DataListReducer
 })
