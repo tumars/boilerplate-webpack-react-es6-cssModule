@@ -23,12 +23,12 @@
 #### 主要功能
 - [x] Hot Module Replacement 热加载
 - [x] ESLint 检测
-- [x] less 以及 autoprefixer 
-- [x] 使用 cssModule
-- [x] 小于 8k 图片转化为 base64
-- [x] 组件内图标使用 svg
+- [x] less、autoprefixer
+- [x] 业务组件使用 cssModule，通用组件使用 BEM 命名法
+- [x] 小于 8k 图片转为 base64
+- [x] svg 图标
 - [x] 文件压缩、添加 MD5
-- [x] 引入 babel-polyfill, whatwg-fetch， 使用 ES6, Fetch
+- [x] ES6+, Fetch
 - [x] 使用 Redux DevTools ([安装浏览器插件](https://github.com/zalmoxisus/redux-devtools-extension))
 
 #### 示例动图：
@@ -162,9 +162,12 @@ Reselect 库可以创建可记忆的(Memoized)、可组合的 selector 函数。
 更多 Reselect 的访问跟介绍请访问：[https://github.com/reactjs/reselect](https://github.com/reactjs/reselect)
 
 ### <span id="Immutable">Immutable </span>
-Immutable 是指数据不可变，如果你的数据嵌套格式比较深的话可以考虑使用，可以防止 javascript 引用类型带来的可能会不小心改变了原始数据的隐患。
+Immutable 是指数据不可变。使用 Immutable 在每次操作修改对象时都会生成一个新对象，而不修改原对象。这对 react 有这么两点意义：
 
-当然如果你足够自信开发时会注意不改变原数据，就可以不用。本项目中是没使用的。
+- 1. 保证了 state 的不可被直接更改。
+- 2. 便于 shouldComponentUpdate 对比前后对象是否相同。
+
+从而一定的程度上的保证安全性和提提高性能。
 
 这是 Immutable.js 的文档页面：[https://facebook.github.io/immutable-js/](https://facebook.github.io/immutable-js/)
 
@@ -175,7 +178,10 @@ React Diff 算法中 React 会借助元素的 key 值来判断该元素是新近
 如果使用 index 来作为 key，当数据更新仅仅是数组重新排序或在其中间位置插入新元素，那么视图元素都将重新渲染。
 
 #### 不要在 componentWillAmount 中调用 setState
+
 在 componentWillAmount 没有意义，所有的 state 初始化应当在 this.state 中定义，而第一次 render 后改变 state 应当在 componentDidAmount 中执行。
+
+> 注：而且这是一个在 react v17 版本中会被移除的时间周期钩子，查看：https://reactjs.org/docs/react-component.html#mounting
 
 #### 注意动画渲染优化，使用 chrome 调试性能
 页面的图像渲染经过如下五个步骤
