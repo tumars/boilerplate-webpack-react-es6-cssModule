@@ -1,9 +1,18 @@
 /*-----------------------------------------------------------------*/
 /*User Reducer*/
 /*-----------------------------------------------------------------*/
+const getTomorrow = () => {
+    const now = new Date(),
+        date = now.getDate() + 1;
+
+    return Date.parse(new Date(now.getFullYear(), now.getMonth(), date))
+}
+
+
 const initUserInfo = {
     screenSize: null,
-    countValue:0
+    countValue:0,
+    tomorrow: getTomorrow()
 }
 
 const UserReducer = (state = initUserInfo, action) => {

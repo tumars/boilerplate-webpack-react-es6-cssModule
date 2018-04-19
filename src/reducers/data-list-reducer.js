@@ -5,50 +5,38 @@ import _ut from 'my-util'
 /*-----------------------------------------------------------------*/
 
 const initListInfo = {
-    movieListInfo: {
-        isFetching: false,
-        list: [],
-        total: 1,
-        now: 0
-    },
-    bookListInfo: {
-        isFetching: false,
-        list: [],
-        total: 1,
-        now: 0
-    }
+    isFetching: false,
+    list: []
 }
 
-const ListReducer = (state = initListInfo, action) => {
+
+const DataListReducer = (state = initListInfo, action) => {
     switch (action.type) {
         case 'LIST_ADD':
             {
-                const { target, list } = action;
-                const targetName = target == 'movie' ? 'movieListInfo' : 'bookListInfo';
-                const oldListInfo = state[targetName];
-                let newListInfo;
-                
                 switch (action.status) {
                     case 'error':
                         {
-                            newListInfo = Object.assign({}, oldListInfo, {isFetching: false}) 
+                            return Object.assign({}, state, {
+                                isFetching: false
+                            }) 
                         }
-                    break;
                     case 'success':
                         {
-                            newListInfo = {
-                                total: list.total,
-                                now: list.now,
-                                list: oldListInfo.list.concat(list.data)
-                            }
+                            const { list } = action;
+                            const oldList = state['list'];
+                            return Object.assign({}, {
+                                list: oldList.concat(list), 
+                                isFetching: false}
+                            ) 
                         }
-                    break;
                     default:
                         {
-                            newListInfo = Object.assign({}, oldListInfo, {isFetching: true}) 
+                            return Object.assign({}, state, {
+                                isFetching: true
+                            }) 
                         }
                 }
-                return Object.assign({}, state, {[targetName]: newListInfo})
             }
         case 'LIST_CLEAR':
             {
@@ -64,15 +52,14 @@ const ListReducer = (state = initListInfo, action) => {
 /*-----------------------------------------------------------------*/
 /*List Action*/
 /*-----------------------------------------------------------------*/
-const addList = (target, list) => ({
+const addList = (list) => ({
     type: 'LIST_ADD', 
     status: 'success',
-    target, 
     list
 })
 
 const fetchStart = () => ({
-    type: 'LIST_ADD'
+    type: 'LIST_ADD',
 })
 
 const fetchError = () => ({
@@ -86,24 +73,26 @@ const clearList = () => ({
 
 
 
+
 /*-----------------------------------------------------------------*/
 /*Async List Action Depend on Redux-Thunk*/
 /*-----------------------------------------------------------------*/
-const fetchAddList = (type, page) => async dispatch => {
+const fetchAddList = () => async dispatch => {
     dispatch(fetchStart())
     try {
-        const list = await _ut.fetch(`http://localhost:3003/${type}${page}`)
-        dispatch(addList(type, list))
+        const list = await _ut.fetch(`http://localhost:3003/movie`)
+        dispatch(addList(list.data))
     } catch(e) {
         dispatch(fetchError())
-        return Promise.reject()
+        console.log(e)
+        return Promise.reject(e)
     }
 }
 
 
 
 export { 
-    ListReducer,
+    DataListReducer,
     addList, clearList,
     fetchAddList
 }

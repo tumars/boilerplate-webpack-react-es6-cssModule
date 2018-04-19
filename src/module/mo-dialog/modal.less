@@ -11,35 +11,27 @@
         -webkit-tap-highlight-color: transparent;
     }
 
-    .tj-dialog__wrapper {
+    .tj-dialog__content {
         z-index: 20;
         position: fixed;
         top: 100px;
         left: 50%;
         right: 0;
         width: 700px;
+        max-height: 800px;
         margin-left: -350px; 
         box-sizing: border-box;
-    }
-
-    .tj-dialog__default {
-        width: 100%;
-        font-size: 37px;
+        color: #000;
+        font-size: 36px;
         line-height: 1.5;
-        background: #fff;
         text-align: center;
-        line-height: 3;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 28px 90px, rgba(0, 0, 0, 0.22) 0px 20px 36px;
-
-
-        max-height: 800px;
+        border-radius: 4px; 
+        background: #fff;
         overflow-x: hidden;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
         &::-webkit-scrollbar {display:none}
-        border-radius: 4px; 
-        color: #000;
-        background: #fff;
     }
 
     .tj-dialog__close {

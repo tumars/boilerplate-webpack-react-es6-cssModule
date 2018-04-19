@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styles from './carousel.less'
 
 const PaginationDecorator = (Carousel) =>(
     class Pagination extends Component {
@@ -23,7 +22,7 @@ const PaginationDecorator = (Carousel) =>(
         render() {
             const  { activeIndex } = this.state
             return (
-                <div className={styles['pagination-wrap']}>
+                <div className="tj-carousel__pagination-wrap">
                     <Carousel 
                         {...this.props}
                         activeIndex={activeIndex}
@@ -35,12 +34,12 @@ const PaginationDecorator = (Carousel) =>(
                         {this.props.children}
                     </Carousel>
 
-                    <div className={styles.pagination}>
+                    <div className="tj-carousel__pagination-content">
                         {
                             this.props.children.map((v,i)=> 
                                 <div 
                                     key={i} 
-                                    className={styles[activeIndex === i ? 'bullet-active' : 'bullet']}
+                                    className={activeIndex === i ? 'tj-carousel__bullet_active' : 'tj-carousel__bullet'}
                                     onClick={()=>this.handleTabClick(i)}
                                 >
                                 </div>

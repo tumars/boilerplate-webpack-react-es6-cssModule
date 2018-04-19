@@ -5,14 +5,12 @@ import './tabs.less';
 var classNames = require('classnames');
 
 // 标签页内容
-const Panel = ({children, isActive, className, style }) => (
+const Panel = ({children, isActive }) => (
     <div 
         className={classNames('tj-tabs__pane', {
             'tj-tabs__pane--active': isActive,
-            'tj-tabs__pane--inactive': !isActive,
-            [className]:className
+            'tj-tabs__pane--inactive': !isActive
         })}
-        style={style}
     >
         {children}
     </div>

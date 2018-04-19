@@ -1,32 +1,31 @@
 import { connect } from 'react-redux'
 import _ut from 'my-util'
-import { changeUserInfo, increaseCount } from 'reducers/user-info'
-import UserComponent from './component.js'
+import { changeUserInfo, increaseCount } from 'reducers/user-info-reducer'
+import Component from './component.js'
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getUserInfo () {
+		initData () {
 			const wid = _ut.fixNum(window.innerWidth)
 			const hei = _ut.fixNum(window.innerHeight)
 
 			dispatch(changeUserInfo(`${wid} * ${hei}`))
 		},
-		countTime() {
+		increaseCount() {
 			dispatch(increaseCount())
 		}
 	}	
 }
 	
 const mapStateToProps = (state) => {
-	const { screenSize, countValue } = state.UserReducer
+	const { screenSize, countValue, tomorrow } = state.UserReducer
     return {
-		screenSize, countValue
+		screenSize, countValue, tomorrow
     }
 }
 
-const Home = connect(
+
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(UserComponent)
-
-export default Home;
+)(Component)

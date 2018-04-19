@@ -22,7 +22,6 @@ var server = http.createServer(async function (request, response) {
     // 将HTTP响应200写入response, 同时设置Content-Type: text/html:
     response.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
     var pathname = url.parse(request.url).pathname;
-
     response.end(JSON.stringify(list[pathname.slice(1)]));    
 });
 

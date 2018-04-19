@@ -3,28 +3,33 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import _ut from 'my-util'
-import { fetchAddList, clearList } from 'reducers/data-list'
+import { fetchAddList, clearList } from 'reducers/data-list-reducer'
 import ListComponent from './component.js'
 import Dialog from 'mo-dialog'
 
+
+const ErrorTip = () => <small>网络出错, 请执行 <b>yarn mock</b> 启动接口</small>
+const handleFetchError = (fetchPromise) => {
+	Promise.resolve(fetchPromise)
+	.then(res=> res)
+	.catch(e=>{
+		Dialog.alert(<ErrorTip />)
+	})
+}
+
+
 const mapDispatchToProps = (dispatch) => {
-	const ErrorTip = () => <small>网络出错, 请执行 <b>yarn mock</b> 启动接口</small>
-	const getData = async (type, page) => {
-		try {
-			dispatch(fetchAddList(type, page))
-		} catch(e) {
-			Dialog.alert(<ErrorTip />, {closeOnClickModal:true})
-		}
+	const getMovie = () => {
+		handleFetchError(dispatch(fetchAddList()))
 	}
 	return {
-		getData,
+		getMovie,
 		initData() {
 			dispatch(clearList())
-			getData('movie', 1)
+			getMovie()
 		},
-		tabChange(index, bookListInfo) {
-			const  { list } = bookListInfo;
-			index == 1 && !list.length && getData('book', 1)
+		tabChange(index) {
+			console.log(index)
 		}
 	}	
 }
@@ -45,28 +50,17 @@ const formatList = (data)=> {
 }
 
 const selectorMovieList = createSelector(
-	state => state.ListReducer.movieListInfo, 
+	state => state.DataListReducer, 
 	formatList
 )
-const selectorBookList = createSelector(
-	state => state.ListReducer.bookListInfo, 
-	formatList
-)
-
-
 
 const mapStateToProps = (state) => {
-	const { movieListInfo, bookListInfo } = state.ListReducer
     return {
-		movieListInfo : selectorMovieList(state),
-		bookListInfo : selectorBookList(state)
+		movieListInfo : selectorMovieList(state)
 	}
 }
 
-
-const List = connect(
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(ListComponent)
-
-export default List
