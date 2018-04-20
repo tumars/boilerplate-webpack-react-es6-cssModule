@@ -32,7 +32,7 @@
 - [x] 使用 Redux DevTools ([安装浏览器插件](https://github.com/zalmoxisus/redux-devtools-extension))
 
 #### 示例动图：
-<img src="./img/demo.gif"  alt="demo" width="375">
+<img src="./img/demo.gif"  alt="demo" width="300">
 <!-- ![demo](./img/demo.gif) -->
 
 <!-- #### <a href="#start">开始使用</a> -->
@@ -44,6 +44,7 @@
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-dialog">弹框 Dialog</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-carousel">走马灯 Carousel</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-tabs">标签页 Tabs</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-infinite-scroll">无限滚动 Infinite-Scroll</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-button">按钮 Button</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-list-loading">列表载入 List-Loading</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-icon">图标 Icon</a>
