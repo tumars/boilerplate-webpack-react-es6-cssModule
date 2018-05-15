@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import _ut from 'my-util'
 import { changeUserInfo, increaseCount } from 'reducers/user-info-reducer'
+import Toast from 'mo-toast'
 import Component from './component.js'
 
 const mapDispatchToProps = (dispatch) => {
@@ -13,6 +14,7 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		increaseCount() {
 			dispatch(increaseCount())
+			Toast('+1')
 		}
 	}	
 }

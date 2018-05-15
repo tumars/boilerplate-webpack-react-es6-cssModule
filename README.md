@@ -40,19 +40,19 @@
 
 ### 组件
 本项目用到的纯组件主要如下：
-
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-dialog">弹框 Dialog</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-carousel">走马灯 Carousel</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-tabs">标签页 Tabs</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-infinite-scroll">无限滚动 Infinite-Scroll</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-button">按钮 Button</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-list-loading">列表载入 List-Loading</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-carousel">走马灯 Carousel</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-dialog">弹框 Dialog</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-icon">图标 Icon</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-steps">步骤条 Steps</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-segmented">分段器 Segmented</a>
-- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-time-count">倒计时 Time-Count</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-infinite-scroll">无限滚动 Infinite-Scroll</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-list-loading">列表载入 List-Loading</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-result-card">结果页 Result-Card</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-segmented">分段器 Segmented</a>
 - <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-spin">菊花图 Spin</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-steps">步骤条 Steps</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-tabs">标签页 Tabs</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-time-count">倒计时 Time-Count</a>
+- <a href="https://github.com/tumars/boilerplate-webpack-react-es6-cssModule/tree/master/src/module/mo-toast">轻提示 Toast</a>
 
 这些组件主要展示思路与方法，功能较基础，仅供参考。实际开发生产时请根据业务需求二次开发。
 
@@ -178,11 +178,11 @@ Immutable 是指数据不可变。使用 Immutable 在每次操作修改对象�
 React Diff 算法中 React 会借助元素的 key 值来判断该元素是新近创建的还是被移动而来的元素，从而减少不必要的元素重渲染。
 如果使用 index 来作为 key，当数据更新仅仅是数组重新排序或在其中间位置插入新元素，那么视图元素都将重新渲染。
 
-#### 不要在 componentWillAmount 中调用 setState
+#### 不要在 componentWillMount 中调用 setState
 
-在 componentWillAmount 没有意义，所有的 state 初始化应当在 this.state 中定义，而第一次 render 后改变 state 应当在 componentDidAmount 中执行。
+在 componentWillMount 没有意义，所有的 state 初始化应当在 this.state 中定义，而第一次 render 后改变 state 应当在 componentDidMount 中执行。
 
-> 注：而且这是一个在 react v17 版本中会被移除的时间周期钩子，查看：https://reactjs.org/docs/react-component.html#mounting
+而且该时间周期钩子在 react v17 版本中将会被移除，查看：https://reactjs.org/docs/react-component.html#mounting
 
 #### 注意动画渲染优化，使用 chrome 调试性能
 页面的图像渲染经过如下五个步骤

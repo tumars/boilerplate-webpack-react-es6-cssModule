@@ -75,7 +75,7 @@ module.exports = {
                 use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:5]"!postcss-loader!less-loader'
             }),
         }, {
-            test:/\.(png|jpg|gif)$/,
+            test:/\.(png|jpg|gif|svg)$/,
             exclude: [/node_modules/],
             use: 'url-loader?limit=8192&name=build/[name].[ext]'
         }]

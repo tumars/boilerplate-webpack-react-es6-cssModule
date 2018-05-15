@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg t="1495504266683" class="icon" style="" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2378"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="200.1953125" height="200">
+    <defs>
+        <style type="text/css">
+            @-webkit-keyframes line {
+                0% {
+                    stroke-dasharray: 2000 0;
+                    stroke-width: 0;
+                }
+                100% {
+                    stroke-dasharray: 0 2000;
+                    stroke-width: 20;
+                }
+            }
+            @keyframes line {
+                0% {
+                    stroke-dasharray: 2000 0;
+                    stroke-width: 0;
+                }
+                100% {
+                    stroke-dasharray: 0 2000;
+                    stroke-width: 20;
+                }
+            }
+            .an1 {
+                fill:#fff;
+                -webkit-animation: line 1s 1;
+                        animation: line 1s 1;
+            }
+        </style>
+    </defs>
+    <path class="an1" d="M347.669304 882.775558c-16.366759 0-32.732495-6.244214-45.237297-18.727527L18.783809 580.824505c-25.022906-24.980951-25.049512-65.516156-0.056282-90.539063 24.966625-25.015743 65.521273-25.049512 90.529853-0.063445l238.411925 238.059907 567.407937-566.578036c25.00858-25.001417 65.549925-24.965601 90.529853 0.056282 24.994254 25.021883 24.966625 65.563228-0.055259 90.543156L392.906601 864.048031C380.4018 876.532367 364.036064 882.775558 347.669304 882.775558z"
+        stroke="#fff" fill="none"></path>
+</svg>

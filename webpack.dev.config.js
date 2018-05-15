@@ -63,7 +63,7 @@ module.exports = {
 				'less-loader'
 			],
 		}, {
-			test: /\.(jpe?g|png|gif)$/i,
+			test: /\.(jpe?g|png|gif|svg)$/i,
 			include: /src/,
 			use: [
 				'url-loader?limit=8192&name=img/[hash:8].[name].[ext]' // 图片小于8k就转化为 base64, 或者单独作为文件
